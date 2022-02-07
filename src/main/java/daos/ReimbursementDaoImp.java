@@ -1,7 +1,11 @@
 package daos;
 
 import models.Reimbursement;
+import utils.ConnectionUtil;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 public class ReimbursementDaoImp implements ReimbursementDao{
@@ -9,8 +13,12 @@ public class ReimbursementDaoImp implements ReimbursementDao{
 
     @Override
     public void createReimbursement(Reimbursement r) {
-        try() {
-            String sql = "INSERT into "
+        String sql = "INSERT into ";
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql);) {
+
+        } catch (SQLException e){
+            e.printStackTrace();
         }
 
 
