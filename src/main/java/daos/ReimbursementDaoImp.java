@@ -1,20 +1,14 @@
 package daos;
 
 import models.Reimbursement;
-
 import models.ReimbursementStatus;
 import models.ReimbursementType;
 import models.User;
 import utils.ConnectionUtil;
-
 import java.sql.*;
 import java.util.ArrayList;
-import utils.ConnectionUtil;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
+
 
 public class ReimbursementDaoImp implements ReimbursementDao{
 
