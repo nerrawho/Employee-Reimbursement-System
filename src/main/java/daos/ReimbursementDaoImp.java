@@ -15,7 +15,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
     @Override
     public void createReimbursement(Reimbursement r) {
 
-        String sql = "INSERT INTO reimbursement values (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO reimbursement (user_id, type, amount, submitted, resolved, description, receipt, status) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement ps = c.prepareStatement(sql);) {
@@ -26,10 +26,10 @@ public class ReimbursementDaoImp implements ReimbursementDao{
             ps.setBoolean(4, r.isSubmit());
             ps.setString(5, r.getResolvedBy());
             ps.setString(6, r.getDescription());
-            //ps.setString(7, "Placeholder");     //Placeholder for receipt
+            ps.setString(7, "Placeholder");     //Placeholder for receipt
             ps.setInt(8, r.getStatus().ordinal());
 
-            ps.executeUpdate(sql);
+            ps.executeUpdate();
         }
         catch (SQLException e){
 
@@ -110,10 +110,10 @@ public class ReimbursementDaoImp implements ReimbursementDao{
 
         String sql = "UPDATE reimbursement SET user_id = " + r.getEmployee().getUserID() + "," +
                 "type = " + r.getType().ordinal() + "," +
-                "ramount = " + r.getAmount() + "," +
-                "rsbubmitted = " + r.isSubmit() + "," +
-                "rresolved = '" + r.getResolvedBy() + "'," +
-                "rdescription = '" + r.getDescription() + "'," +
+                "amount = " + r.getAmount() + "," +
+                "sbubmitted = " + r.isSubmit() + "," +
+                "resolved = '" + r.getResolvedBy() + "'," +
+                "description = '" + r.getDescription() + "'," +
                 "status = " + r.getStatus().ordinal() +
                 "WHERE id = " + r.getReimbursementID();
 

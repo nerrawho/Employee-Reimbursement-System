@@ -1,5 +1,6 @@
 package daos;
 
+import models.Reimbursement;
 import models.User;
 import models.UserRole;
 import utils.ConnectionUtil;
@@ -12,20 +13,43 @@ public class UserDaoImp implements UserDao
 {
 
     @Override
-    public void createUser(User u)
+    public void createUser(User u) {
+
+            String sql = "INSERT INTO users (first, last, username, password, email, type) values (?, ?, ?, ?, ?, ?)";
+
+            try(Connection c = ConnectionUtil.getConnection();
+                PreparedStatement ps = c.prepareStatement(sql);) {
+
+                ps.setString(1,u.getFirst());
+                ps.setString(2, u.getLast());
+                ps.setString(3, u.getUsername());
+                ps.setString(4, u.getPassword());
+                ps.setString(5, u.getEmail());
+                ps.setInt(6, u.getRole().ordinal());
+
+                ps.executeUpdate();
+            }
+            catch (SQLException e){
+
+                e.printStackTrace();
+            }
+
+    }
+
+    /*public void createUser(User u)
     {
-        String sql = "Insert INTO users VALUES ("+ u.getFirst() + " "+ u.getLast() +" "+ u.getUsername() +" "+ u.getPassword() +" "+ u.getEmail() +" "+ (u.getRole().ordinal()) +")";
+        String sql = "INSERT INTO users VALUES ("+ u.getFirst() + ", "+ u.getLast() +", "+ u.getUsername() +", "+ u.getPassword() +", "+ u.getEmail() +", "+ (u.getRole().ordinal()) +")";
         try (Connection c = ConnectionUtil.getConnection();
              PreparedStatement ps = c.prepareStatement(sql);)
         {
             System.out.println(sql);
-            ps.executeUpdate(sql);
+            ps.executeUpdate();
         } catch (SQLException e)
         {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
     @Override
     public List<User> readAllUser()

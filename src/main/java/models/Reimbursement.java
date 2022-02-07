@@ -24,7 +24,7 @@ public class Reimbursement {
         this.status = status;
     }
 
-    public Reimbursement(User employee, ReimbursementType type, ReimbursementStatus status, double amount, boolean submit, String resolvedBy, String description) {
+    public Reimbursement(User employee, ReimbursementType type, double amount, boolean submit, String resolvedBy, String description, ReimbursementStatus status) {
         this.employee = employee;
         this.type = type;
         this.status = status;
@@ -60,14 +60,6 @@ public class Reimbursement {
         this.type = type;
     }
 
-    public ReimbursementStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(ReimbursementStatus status) {
-        this.status = status;
-    }
-
     public double getAmount() {
         return amount;
     }
@@ -98,5 +90,13 @@ public class Reimbursement {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ReimbursementStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ReimbursementStatus status) {
+        this.status = status;
     }
 }
