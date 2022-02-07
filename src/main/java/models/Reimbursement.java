@@ -2,23 +2,38 @@ package models;
 
 public class Reimbursement {
     private int reimbursementID;
+    private User employee;
     private ReimbursementType type;
-    private ReimbursementStatus status;
-    private int amount;
+    private double amount;
     private boolean submit;
     private String resolvedBy;
     private String description;
+    private ReimbursementStatus status;
 
     public Reimbursement() {
     }
 
-    public Reimbursement(ReimbursementType type, int amount, boolean submit, String resolvedBy, String description, ReimbursementStatus status) {
+    public Reimbursement(int reimbursementID, User employee, ReimbursementType type, double amount, boolean submit, String resolvedBy, String description, ReimbursementStatus status) {
+        this.reimbursementID = reimbursementID;
+        this.employee = employee;
         this.type = type;
         this.amount = amount;
         this.submit = submit;
         this.resolvedBy = resolvedBy;
         this.description = description;
         this.status = status;
+    }
+
+    public Reimbursement(User employee, ReimbursementType type, double amount, boolean submit, String resolvedBy, String description, ReimbursementStatus status) {
+        this.employee = employee;
+        this.type = type;
+        this.status = status;
+        this.amount = amount;
+        this.submit = submit;
+        this.resolvedBy = resolvedBy;
+        this.description = description;
+
+
     }
 
     public int getReimbursementID() {
@@ -29,6 +44,14 @@ public class Reimbursement {
         this.reimbursementID = reimbursementID;
     }
 
+    public User getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(User employee) {
+        this.employee = employee;
+    }
+
     public ReimbursementType getType() {
         return type;
     }
@@ -37,11 +60,11 @@ public class Reimbursement {
         this.type = type;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -65,15 +88,15 @@ public class Reimbursement {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public ReimbursementStatus getStatus() {
         return status;
     }
 
     public void setStatus(ReimbursementStatus status) {
         this.status = status;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }
