@@ -1,6 +1,7 @@
 package daos;
 
 import models.Reimbursement;
+<<<<<<< HEAD
 import models.ReimbursementStatus;
 import models.ReimbursementType;
 import models.User;
@@ -8,12 +9,20 @@ import utils.ConnectionUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
+=======
+import utils.ConnectionUtil;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+>>>>>>> 7fc5f3e041add479b1f3f7b65be3b2d272d7e8ef
 import java.util.List;
 
 public class ReimbursementDaoImp implements ReimbursementDao{
 
     @Override
     public void createReimbursement(Reimbursement r) {
+<<<<<<< HEAD
 
         String sql = "INSERT INTO reimbursement values (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -32,6 +41,13 @@ public class ReimbursementDaoImp implements ReimbursementDao{
             ps.executeUpdate(sql);
 
         } catch(SQLException e) {
+=======
+        String sql = "INSERT into ";
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql);) {
+
+        } catch (SQLException e){
+>>>>>>> 7fc5f3e041add479b1f3f7b65be3b2d272d7e8ef
             e.printStackTrace();
         }
     }

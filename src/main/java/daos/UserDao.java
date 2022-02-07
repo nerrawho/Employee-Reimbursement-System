@@ -2,10 +2,13 @@ package daos;
 
 import models.User;
 
-public interface UserDao {
+import java.util.List;
 
-    public boolean createEmployee(User e);
-    public boolean createManager(User m);
-
-
+public interface UserDao
+{
+    public void createUser(User u);
+    public List<User> readAllUser();
+    public User readPersonById(int id);
+    public void updateUser(User u);
+    public void deleteUser(User u);
 }
