@@ -31,7 +31,7 @@ public class EmployeeReimbursementDriver {
             UserDao u = new UserDaoImp();
             ReimbursementDao r = new ReimbursementDaoImp();
             User user = new User("username", "password" , "first", "last", "something@email.com", UserRole.EMPLOYEE);
-            Reimbursement reim = new Reimbursement(user, ReimbursementType.FOOD, 55.55, false, "dude", "sushi", ReimbursementStatus.APPROVED);
+           // Reimbursement reim = new Reimbursement(user, ReimbursementType.FOOD, 55.55, false, "dude", "sushi", ReimbursementStatus.APPROVED);
 
 
             //r.createReimbursement(reim);
