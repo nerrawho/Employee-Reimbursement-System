@@ -1,6 +1,7 @@
 package services;
 
 import daos.UserDao;
+import daos.UserDaoImp;
 import models.User;
 import models.UserRole;
 
@@ -8,35 +9,39 @@ import java.util.List;
 
 public class UserService
 {
-    private UserDao ud;
-    public UserService(UserDao ud)
-    {
-        this.ud = ud;
-    }
-    public User createNewUser(String username, String password, String first, String last, UserRole role)
+    private final UserDao userDao = new UserDaoImp();
+
+    public boolean createUser(String username, String password, String first, String last, UserRole role)
     {
         String email = first+"."+last+"@MBASB.org";
         email = email.toLowerCase();
         User u = new User (username, password, first, last, email, role);
-        ud.createUser(u);
-        return u;
+        return userDao.createUser(u);
+    }
+    public boolean createUser(User u)
+    {
+        String email = u.getFirst()+"."+u.getLast()+"@MBASB.org";
+        email = email.toLowerCase();
+        u.setEmail(email);
+        return userDao.createUser(u);
     }
 
     public List<User> getAllUser()
     {
-        return ud.readAllUser();
+        return userDao.readAllUser();
     }
 
     public User getUserById(int id)
     {
-        return ud.readPersonById(id);
+        return userDao.readPersonById(id);
     }
-    public void updateUser(User u)
+    public boolean updateUser(User u)
     {
-        ud.updateUser(u);
+        userDao.updateUser(u);
+        return false;
     }
     public void deleteUser(User u)
     {
-      ud.deleteUser(u);
+        userDao.deleteUser(u);
     }
 }

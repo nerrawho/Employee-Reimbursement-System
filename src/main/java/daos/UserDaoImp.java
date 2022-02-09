@@ -1,6 +1,5 @@
 package daos;
 
-import models.Reimbursement;
 import models.User;
 import models.UserRole;
 import utils.ConnectionUtil;
@@ -13,7 +12,7 @@ public class UserDaoImp implements UserDao
 {
 
     @Override
-    public void createUser(User u)
+    public boolean createUser(User u)
     {
             String sql = "INSERT INTO users (first, last, username, password, email, type) values (?, ?, ?, ?, ?, ?)";
             try(Connection c = ConnectionUtil.getConnection();
@@ -31,6 +30,7 @@ public class UserDaoImp implements UserDao
             {
                 e.printStackTrace();
             }
+        return false;
     }
 
 
@@ -45,7 +45,20 @@ public class UserDaoImp implements UserDao
             ResultSet rs = ps.executeQuery(sql);
             while (rs.next())
             {
-                User u = new User (rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), UserRole.values()[rs.getInt(6)]);
+                User u = new User();
+                int id = rs.getInt("id");
+                u.setUserID(id);
+
+                int roleOrdinal = rs.getInt("type");
+                UserRole[] role = UserRole.values();
+                u.setRole(role[roleOrdinal]);
+
+                u.setFirst(rs.getString("first"));
+                u.setLast(rs.getString("last"));
+                u.setUsername(rs.getString("username"));
+                u.setPassword(rs.getString("password"));
+                u.setEmail(rs.getString("email"));
+
                 uList.add(u);
             }
         } catch (SQLException e)
@@ -57,51 +70,78 @@ public class UserDaoImp implements UserDao
     @Override
     public User readPersonById(int id)
     {
-        User u = new User();
-        String sql = "SELECT * FROM users where id=" + id;
+
+        String sql = "SELECT * FROM users where id= ?";
         try (Connection c = ConnectionUtil.getConnection();
              PreparedStatement ps = c.prepareStatement(sql);)
         {
+            ps.setInt(1,id);
             ResultSet rs = ps.executeQuery(sql);
-            while (rs.next())
+            if (rs.next())
             {
-                u = new User (rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), UserRole.values()[rs.getInt(6)]);
+                User u = new User();
+                u.setUserID(id);
+                int roleOrdinal = rs.getInt("type");
+                UserRole[] role = UserRole.values();
+                u.setRole(role[roleOrdinal]);
+
+                u.setFirst(rs.getString("first"));
+                u.setLast(rs.getString("last"));
+                u.setUsername(rs.getString("username"));
+                u.setPassword(rs.getString("password"));
+                u.setEmail(rs.getString("email"));
+                return u;
             }
         } catch (SQLException e)
         {
             e.printStackTrace();
-        } return u;
+        } return null;
     }
 
     @Override
-    public void updateUser(User u)
+    public boolean updateUser(User u)
     {
-        String sql = "UPDATE users SET first_name= " + u.getFirst() +", " + "last_name= " + u.getLast() + ", "
-                + "username = " + u.getUsername() + ", " + "password= " + u.getPassword() + ", "
-                + "email='" + u.getEmail() + ", " + "Role= " + (u.getRole().ordinal()) + " WHERE id=" + u.getUserID();
+        String sql = "UPDATE users SET first = ?, last = ?, username = ?, password = ?, email = ?, type = ? where id = ? ";
         try (Connection c = ConnectionUtil.getConnection();
-             Statement s = c.createStatement();)
+             PreparedStatement ps = c.prepareStatement(sql);)
         {
-            s.executeUpdate(sql);
+            ps.setString(1,u.getFirst());
+            ps.setString(2, u.getLast());
+            ps.setString(3, u.getUsername());
+            ps.setString(4, u.getPassword());
+            ps.setString(5, u.getEmail());
+            ps.setInt(6, u.getRole().ordinal());
+            int rowsAffected = ps.executeUpdate(sql);
+
+            if(rowsAffected==1){
+                return true;
+            }
         } catch (SQLException e)
         {
             e.printStackTrace();
         }
-
+        return false;
     }
 
     @Override
-    public void deleteUser(User u)
+    public boolean deleteUser(User u)
     {
-        String sql = "DELETE FROM users WHERE id=" + u.getUserID();
+        String sql = "DELETE FROM users WHERE id= ?";
         try (Connection c = ConnectionUtil.getConnection();
-             Statement s = c.createStatement();)
+             PreparedStatement ps = c.prepareStatement(sql);)
         {
-            s.executeUpdate(sql);
+            ps.setInt(1, u.getUserID());
+            int rowsAffected = ps.executeUpdate();
+
+            if(rowsAffected==1){
+                return true;
+            }
+            ps.executeUpdate(sql);
         } catch (SQLException e)
         {
             e.printStackTrace();
         }
-
+        return false;
     }
+
 }
