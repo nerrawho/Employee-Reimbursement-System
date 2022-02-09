@@ -5,37 +5,41 @@ public class Reimbursement {
     private User employee;
     private ReimbursementType type;
     private double amount;
-    private boolean submit;
+    private String submit;
     private String resolvedBy;
+    private String resolved;
     private String description;
     private ReimbursementStatus status;
 
+
+    //Constructors
     public Reimbursement() {
     }
 
-    public Reimbursement(int reimbursementID, User employee, ReimbursementType type, double amount, boolean submit, String resolvedBy, String description, ReimbursementStatus status) {
+    public Reimbursement(int reimbursementID, User employee, ReimbursementType type, double amount, String submit, String resolvedBy, String resolved, String description, ReimbursementStatus status) {
         this.reimbursementID = reimbursementID;
         this.employee = employee;
         this.type = type;
         this.amount = amount;
         this.submit = submit;
         this.resolvedBy = resolvedBy;
+        this.resolved = resolved;
         this.description = description;
         this.status = status;
     }
 
-    public Reimbursement(User employee, ReimbursementType type, double amount, boolean submit, String resolvedBy, String description, ReimbursementStatus status) {
+    public Reimbursement(User employee, ReimbursementType type, double amount, String submit, String resolvedBy, String resolved, String description, ReimbursementStatus status) {
         this.employee = employee;
         this.type = type;
-        this.status = status;
         this.amount = amount;
         this.submit = submit;
         this.resolvedBy = resolvedBy;
+        this.resolved = resolved;
         this.description = description;
-
-
+        this.status = status;
     }
 
+    //Mutators
     public int getReimbursementID() {
         return reimbursementID;
     }
@@ -68,11 +72,11 @@ public class Reimbursement {
         this.amount = amount;
     }
 
-    public boolean isSubmit() {
+    public String getSubmit() {
         return submit;
     }
 
-    public void setSubmit(boolean submit) {
+    public void setSubmit(String submit) {
         this.submit = submit;
     }
 
@@ -82,6 +86,14 @@ public class Reimbursement {
 
     public void setResolvedBy(String resolvedBy) {
         this.resolvedBy = resolvedBy;
+    }
+
+    public String getResolved() {
+        return resolved;
+    }
+
+    public void setResolved(String resolved) {
+        this.resolved = resolved;
     }
 
     public String getDescription() {
@@ -98,5 +110,20 @@ public class Reimbursement {
 
     public void setStatus(ReimbursementStatus status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Reimbursement{" +
+                "reimbursementID=" + reimbursementID +
+                ", employee=" + employee +
+                ", type=" + type +
+                ", amount=" + amount +
+                ", submit='" + submit + '\'' +
+                ", resolvedBy='" + resolvedBy + '\'' +
+                ", resolved='" + resolved + '\'' +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                '}';
     }
 }
