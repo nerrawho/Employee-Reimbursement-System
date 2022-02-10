@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'org.example'
@@ -10,6 +11,7 @@ repositories {
 }
 
 dependencies {
+
     // https://mvnrepository.com/artifact/junit/junit
     testImplementation 'junit:junit:4.13.1'
 
@@ -36,6 +38,6 @@ dependencies {
 
 }
 
-test {
-    useJUnitPlatform()
+application {
+    mainClass = 'EmployeeReimbursementDriver'
 }

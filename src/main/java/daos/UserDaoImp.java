@@ -68,7 +68,7 @@ public class UserDaoImp implements UserDao
     }
 
     @Override
-    public User readPersonById(int id)
+    public User readUserById(int id)
     {
 
         String sql = "SELECT * FROM users where id= ?";
@@ -96,6 +96,36 @@ public class UserDaoImp implements UserDao
         {
             e.printStackTrace();
         } return null;
+    }
+
+    @Override
+    public User readUserByEmail(String email) {
+
+        String sql = "SELECT * FROM users WHERE email = ?";
+        try (Connection c = ConnectionUtil.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql);) {
+            ps.setString(1,email);
+            ResultSet rs = ps.executeQuery(sql);
+
+            if (rs.next()) {
+                User u = new User();
+                u.setUserID(rs.getInt("id"));
+                int roleOrdinal = rs.getInt("type");
+                UserRole[] role = UserRole.values();
+                u.setRole(role[roleOrdinal]);
+
+                u.setFirst(rs.getString("first"));
+                u.setLast(rs.getString("last"));
+                u.setUsername(rs.getString("username"));
+                u.setPassword(rs.getString("password"));
+                u.setEmail(rs.getString("email"));
+                return u;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

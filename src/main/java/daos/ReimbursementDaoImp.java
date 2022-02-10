@@ -23,9 +23,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
             ps.setInt(1, r.getEmployee().getUserID());
             ps.setInt(2, r.getType().ordinal());
             ps.setDouble(3, r.getAmount());
-            ps.setString(4, r.getSubmit());
+            ps.setDate(4, r.getSubmit());
             ps.setString(5, r.getResolvedBy());
-            ps.setString(6, r.getResolved());
+            ps.setDate(6, r.getResolved());
             ps.setString(7, r.getDescription());
             ps.setString(8, "Placeholder");     //Placeholder for receipt
             ps.setInt(9, r.getStatus().ordinal());
@@ -39,15 +39,45 @@ public class ReimbursementDaoImp implements ReimbursementDao{
     }
 
     @Override
+    public Reimbursement readReimbursementById(int id) {
+
+        Reimbursement r = new Reimbursement();
+
+        String sql = "SELECT * FROM reimbursement WHERE id = " + id;
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement s = c.prepareStatement(sql);) {
+
+            ResultSet rs = s.executeQuery();
+            rs.next();
+
+            r.setReimbursementID(rs.getInt(1));
+            User u = new User();
+            u.setUserID(rs.getInt(2));
+            r.setEmployee(u);
+            r.setType(ReimbursementType.values()[rs.getInt(3)]);
+            r.setAmount(rs.getDouble(4));
+            r.setSubmit(rs.getDate(5));
+            r.setResolvedBy(rs.getString(6));
+            r.setResolved(rs.getDate(7));
+            r.setDescription(rs.getString(8));
+            r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return r;
+    }
+
+    @Override
     public List<Reimbursement> readReimbursementByEmployee(int employeeId) {
 
         List<Reimbursement> list= new ArrayList<Reimbursement>();
 
         String sql = "SELECT * FROM reimbursement WHERE user_id = " + employeeId;
         try(Connection c = ConnectionUtil.getConnection();
-            Statement s = c.createStatement();) {
+            PreparedStatement s = c.prepareStatement(sql);) {
 
-            ResultSet rs = s.executeQuery(sql);
+            ResultSet rs = s.executeQuery();
 
             while(rs.next()) {
                 Reimbursement r = new Reimbursement();
@@ -57,9 +87,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setEmployee(u);
                 r.setType(ReimbursementType.values()[rs.getInt(3)]);
                 r.setAmount(rs.getDouble(4));
-                r.setSubmit(rs.getString(5));
+                r.setSubmit(rs.getDate(5));
                 r.setResolvedBy(rs.getString(6));
-                r.setResolved(rs.getString(7));
+                r.setResolved(rs.getDate(7));
                 r.setDescription(rs.getString(8));
                 r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
 
@@ -79,9 +109,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
 
         String sql = "SELECT * FROM reimbursement WHERE type = " + type;
         try(Connection c = ConnectionUtil.getConnection();
-            Statement s = c.createStatement();) {
+            PreparedStatement s = c.prepareStatement(sql);) {
 
-            ResultSet rs = s.executeQuery(sql);
+            ResultSet rs = s.executeQuery();
 
             while(rs.next()) {
                 Reimbursement r = new Reimbursement();
@@ -91,9 +121,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setEmployee(u);
                 r.setType(ReimbursementType.values()[rs.getInt(3)]);
                 r.setAmount(rs.getDouble(4));
-                r.setSubmit(rs.getString(5));
+                r.setSubmit(rs.getDate(5));
                 r.setResolvedBy(rs.getString(6));
-                r.setResolved(rs.getString(7));
+                r.setResolved(rs.getDate(7));
                 r.setDescription(rs.getString(8));
                 r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
 
@@ -113,9 +143,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
 
         String sql = "SELECT * FROM reimbursement WHERE status = " + status;
         try(Connection c = ConnectionUtil.getConnection();
-            Statement s = c.createStatement();) {
+            PreparedStatement s = c.prepareStatement(sql);) {
 
-            ResultSet rs = s.executeQuery(sql);
+            ResultSet rs = s.executeQuery();
 
             while(rs.next()) {
                 Reimbursement r = new Reimbursement();
@@ -125,9 +155,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setEmployee(u);
                 r.setType(ReimbursementType.values()[rs.getInt(3)]);
                 r.setAmount(rs.getDouble(4));
-                r.setSubmit(rs.getString(5));
+                r.setSubmit(rs.getDate(5));
                 r.setResolvedBy(rs.getString(6));
-                r.setResolved(rs.getString(7));
+                r.setResolved(rs.getDate(7));
                 r.setDescription(rs.getString(8));
                 r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
 
@@ -148,9 +178,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
 
         String sql = "SELECT * FROM reimbursement";
         try(Connection c = ConnectionUtil.getConnection();
-            Statement s = c.createStatement();) {
+            PreparedStatement s = c.prepareStatement(sql);) {
 
-            ResultSet rs = s.executeQuery(sql);
+            ResultSet rs = s.executeQuery();
 
             while(rs.next()) {
                 Reimbursement r = new Reimbursement();
@@ -160,9 +190,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setEmployee(u);
                 r.setType(ReimbursementType.values()[rs.getInt(3)]);
                 r.setAmount(rs.getDouble(4));
-                r.setSubmit(rs.getString(5));
+                r.setSubmit(rs.getDate(5));
                 r.setResolvedBy(rs.getString(6));
-                r.setResolved(rs.getString(7));
+                r.setResolved(rs.getDate(7));
                 r.setDescription(rs.getString(8));
                 r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
 
@@ -190,9 +220,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 "WHERE id = " + r.getReimbursementID();
 
         try(Connection c = ConnectionUtil.getConnection();
-            Statement s = c.createStatement();) {
+            PreparedStatement s = c.prepareStatement(sql);) {
 
-            s.executeUpdate(sql);
+            s.executeUpdate();
 
         } catch(SQLException e) {
             e.printStackTrace();
@@ -205,9 +235,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
         String sql = "DELETE FROM reimbursement WHERE id = " + r.getReimbursementID();
 
         try(Connection c = ConnectionUtil.getConnection();
-            Statement s = c.createStatement();) {
+            PreparedStatement s = c.prepareStatement(sql);) {
 
-            s.executeUpdate(sql);
+            s.executeUpdate();
 
         } catch(SQLException e) {
             e.printStackTrace();
