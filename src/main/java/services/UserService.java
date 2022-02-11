@@ -33,7 +33,11 @@ public class UserService
 
     public User getUserById(int id)
     {
-        return userDao.readPersonById(id);
+        return userDao.readUserById(id);
+    }
+
+    public User getUserByEmail(String email) {
+        return userDao.readUserByEmail(email);
     }
     public boolean updateUser(User u)
     {

@@ -1,13 +1,15 @@
 package models;
 
+import java.sql.Date;
+
 public class Reimbursement {
     private int reimbursementID;
     private User employee;
     private ReimbursementType type;
     private double amount;
-    private String submit;
+    private Date submit;
     private String resolvedBy;
-    private String resolved;
+    private Date resolved;
     private String description;
     private ReimbursementStatus status;
 
@@ -16,7 +18,18 @@ public class Reimbursement {
     public Reimbursement() {
     }
 
-    public Reimbursement(int reimbursementID, User employee, ReimbursementType type, double amount, String submit, String resolvedBy, String resolved, String description, ReimbursementStatus status) {
+    public Reimbursement(User employee, ReimbursementType type, double amount, Date submit, String resolvedBy, Date resolved, String description, ReimbursementStatus status) {
+        this.employee = employee;
+        this.type = type;
+        this.amount = amount;
+        this.submit = submit;
+        this.resolvedBy = resolvedBy;
+        this.resolved = resolved;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Reimbursement(int reimbursementID, User employee, ReimbursementType type, double amount, Date submit, String resolvedBy, Date resolved, String description, ReimbursementStatus status) {
         this.reimbursementID = reimbursementID;
         this.employee = employee;
         this.type = type;
@@ -28,16 +41,7 @@ public class Reimbursement {
         this.status = status;
     }
 
-    public Reimbursement(User employee, ReimbursementType type, double amount, String submit, String resolvedBy, String resolved, String description, ReimbursementStatus status) {
-        this.employee = employee;
-        this.type = type;
-        this.amount = amount;
-        this.submit = submit;
-        this.resolvedBy = resolvedBy;
-        this.resolved = resolved;
-        this.description = description;
-        this.status = status;
-    }
+
 
     //Mutators
     public int getReimbursementID() {
@@ -72,11 +76,11 @@ public class Reimbursement {
         this.amount = amount;
     }
 
-    public String getSubmit() {
+    public Date getSubmit() {
         return submit;
     }
 
-    public void setSubmit(String submit) {
+    public void setSubmit(Date submit) {
         this.submit = submit;
     }
 
@@ -88,11 +92,11 @@ public class Reimbursement {
         this.resolvedBy = resolvedBy;
     }
 
-    public String getResolved() {
+    public Date getResolved() {
         return resolved;
     }
 
-    public void setResolved(String resolved) {
+    public void setResolved(Date resolved) {
         this.resolved = resolved;
     }
 

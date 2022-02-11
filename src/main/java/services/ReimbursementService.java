@@ -8,17 +8,21 @@ import models.User;
 import utils.LoggingSingleton;
 
 import java.util.List;
+import java.sql.Date;
 
 public class ReimbursementService {
 
     private ReimbursementDao rd;
+
+    public ReimbursementService() {
+    }
 
     public ReimbursementService(ReimbursementDao rd) {
         this.rd = rd;
     }
 
     //Method to create new reimbursement
-    public Reimbursement createReimbursement(User u, ReimbursementType type, double amount, String submit, String resolvedBy, String resolved, String description, ReimbursementStatus status) {
+    public Reimbursement createReimbursement(User u, ReimbursementType type, double amount, Date submit, String resolvedBy, Date resolved, String description, ReimbursementStatus status) {
 
         Reimbursement r = new Reimbursement(u, type, amount, submit, resolvedBy, resolved, description, status);
 
@@ -27,6 +31,11 @@ public class ReimbursementService {
         rd.createReimbursement(r);
 
         return r;
+    }
+
+    //Method to return a single reimbursement by primary key ID.
+    public Reimbursement getReimbursementById(int id) {
+        return rd.readReimbursementById(id);
     }
 
 
