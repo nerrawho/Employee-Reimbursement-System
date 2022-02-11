@@ -1,60 +1,55 @@
 package controllers;
-
-import io.javalin.http.Context;
 import models.User;
 import services.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.javalin.http.Handler;
 
-import java.util.List;
+
 
 public class UserController
 {
-    private final UserService userService = new UserService();
 
-    public void handleGetAll(Context ctx)
-    {
-        List<User> uList = userService.getAllUser();
-        ctx.json(uList);
+    private UserService us;
+    private ObjectMapper mapper = new ObjectMapper();
+
+    public UserController(UserService us){
+        this.us = us;
     }
 
-    public void handleGetOne(Context ctx)
+    public Handler createUser = (context) ->
     {
-        String idParam = ctx.pathParam("id");
-        int id = Integer.parseInt(idParam);
-        User user = userService.getUserById(id);
-        ctx.json(user);
-    }
 
-    public void handleUpdate(Context ctx)
+        User u = mapper.readValue(context.body(), User.class);
+
+        System.out.println(u);
+
+        us.createUser(u.getUsername(),u.getPassword(),u.getFirst(),u.getLast(), u.getRole());
+
+        context.result(mapper.writeValueAsString(u));
+
+    };
+
+    public Handler getAllUser = (context) ->
     {
-        String idParam = ctx.pathParam("id");
-        User userToUpdate = ctx.bodyAsClass(User.class);
-        int idToUpdate = Integer.parseInt(idParam);
-        userToUpdate.setUserID(idToUpdate);
+        context.result(mapper.writeValueAsString(us.getAllUser()));
+    };
 
-        boolean success = userService.updateUser(userToUpdate);
-        if(success)
-        {
-            ctx.status(200);
-        } else {
-            ctx.status(400);
-        }
-    }
-
-    public void handleCreate(Context ctx)
+    public Handler getUserById = (context) ->
     {
-        User newUser = ctx.bodyAsClass(User.class);
-        boolean success = userService.createUser(newUser);
 
-        if(success)
-        {
-            ctx.status(201);
-        } else{
-            ctx.status(400);
-        }
-    }
+        Integer id = Integer.parseInt(context.pathParam("id"));
 
-    public void handleDelete(Context ctx)
+        context.result(mapper.writeValueAsString(us.getUserById(id)));
+
+    };
+
+    public Handler deleteUser = (context) ->
     {
-        ctx.status(405);
-    }
+
+    };
+
+    public Handler updateUser = (context) ->
+    {
+
+    };
 }
