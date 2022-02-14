@@ -1,35 +1,64 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.javalin.http.Handler;
 import models.Reimbursement;
+import models.ReimbursementType;
+import models.User;
 import services.ReimbursementService;
 import io.javalin.http.Context;
+import services.UserService;
 
 import java.util.List;
 
 public class ReimbursementController {
 
-    private final ReimbursementService rs = new ReimbursementService();
+    private ReimbursementService rs;
+    private UserService us;
+    private ObjectMapper mapper = new ObjectMapper();
 
-    public void handleGetAll(Context ctx) {
+    public ReimbursementController(ReimbursementService rs, UserService ps) {
+        this.rs = rs;
+        this.us = us;
+    }
+
+    public Handler createReimbursement = context -> {
+
+        Ticket tick = mapper.readValue(context.body(), Ticket.class);
+
+        String email = tick.email;
+        String type = tick.type.trim().toUpperCase();
+        Double amount = Double.parseDouble(tick.amount);
+        String description = tick.description;
+        
+        User u = us.getUserByEmail(email);
+
+        rs.createReimbursement(u, type, amount, description);
+    };
+
+    public Handler getReimbursementById = context -> {
+        Integer idParam = Integer.parseInt(context.pathParam("id"));
+        Reimbursement r = rs.getReimbursementById(idParam);
+        context.json(r);
+    };
+
+    public Handler getAllReimbursement = context -> {
         List<Reimbursement> list = rs.getAllReimbursement();
-        ctx.json(list);
-    }
+        context.json(list);
+    };
 
-    public void handeGetOne(Context ctx){
-        String idParam = ctx.pathParam("id");
-        int reimbursementId = Integer.parseInt(idParam);
-        Reimbursement r = rs.getReimbursementById(reimbursementId);
-        if(r != null) {
-            ctx.json(r);
-        } else {
-            ctx.status(404);
-        }
-    }
+    public Handler getReimbursementByEmployee = context -> {
+        String email = String.valueOf(context.req.getSession().getAttribute("logged-in"));
+        User u = us.getUserByEmail(email);
+        List<Reimbursement> list = rs.getReimbursementByEmployee(u);
+        context.json(list);
+    };
 
-    public void handleUpdate(Context ctx) {
-        String idParam = ctx.pathParam("id");
-        Reimbursement rtu = ctx.bodyAsClass(Reimbursement.class);
-        int idToUpdate = Integer.parseInt(idParam);
-        rtu.setReimbursementID(idToUpdate);
-    }
+}
+
+class Ticket {
+    public String email;
+    public String type;
+    public String amount;
+    public String description;
 }

@@ -1,24 +1,39 @@
 package models;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class Reimbursement {
     private int reimbursementID;
     private User employee;
     private ReimbursementType type;
     private double amount;
-    private Date submit;
+    private String submit;
     private String resolvedBy;
-    private Date resolved;
+    private String resolved;
     private String description;
     private ReimbursementStatus status;
+
+    SimpleDateFormat dateFormat =  new SimpleDateFormat("MM/dd/yyyy");
+    long currentDate = System.currentTimeMillis();
 
 
     //Constructors
     public Reimbursement() {
     }
 
-    public Reimbursement(User employee, ReimbursementType type, double amount, Date submit, String resolvedBy, Date resolved, String description, ReimbursementStatus status) {
+    public Reimbursement(User employee, ReimbursementType type, double amount, String description) {
+        this.employee = employee;
+        this.type = type;
+        this.amount = amount;
+        submit = dateFormat.format(currentDate);
+        resolvedBy = null;
+        resolved = null;
+        this.description = description;
+        status = ReimbursementStatus.PENDING;
+    }
+
+    public Reimbursement(User employee, ReimbursementType type, double amount, String submit, String resolvedBy, String resolved, String description, ReimbursementStatus status) {
         this.employee = employee;
         this.type = type;
         this.amount = amount;
@@ -29,7 +44,7 @@ public class Reimbursement {
         this.status = status;
     }
 
-    public Reimbursement(int reimbursementID, User employee, ReimbursementType type, double amount, Date submit, String resolvedBy, Date resolved, String description, ReimbursementStatus status) {
+    public Reimbursement(int reimbursementID, User employee, ReimbursementType type, double amount, String submit, String resolvedBy, String resolved, String description, ReimbursementStatus status) {
         this.reimbursementID = reimbursementID;
         this.employee = employee;
         this.type = type;
@@ -76,11 +91,11 @@ public class Reimbursement {
         this.amount = amount;
     }
 
-    public Date getSubmit() {
+    public String getSubmit() {
         return submit;
     }
 
-    public void setSubmit(Date submit) {
+    public void setSubmit(String submit) {
         this.submit = submit;
     }
 
@@ -92,11 +107,11 @@ public class Reimbursement {
         this.resolvedBy = resolvedBy;
     }
 
-    public Date getResolved() {
+    public String getResolved() {
         return resolved;
     }
 
-    public void setResolved(Date resolved) {
+    public void setResolved(String resolved) {
         this.resolved = resolved;
     }
 

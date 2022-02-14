@@ -6,14 +6,18 @@ import models.ReimbursementType;
 import models.User;
 import utils.ConnectionUtil;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 
 public class ReimbursementDaoImp implements ReimbursementDao{
 
+
+
     @Override
-    public void createReimbursement(Reimbursement r) {
+    public boolean createReimbursement(Reimbursement r) {
 
         String sql = "INSERT INTO reimbursement (user_id, type, amount, submitted, resolved_by, resolved, description, receipt, status) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -23,19 +27,23 @@ public class ReimbursementDaoImp implements ReimbursementDao{
             ps.setInt(1, r.getEmployee().getUserID());
             ps.setInt(2, r.getType().ordinal());
             ps.setDouble(3, r.getAmount());
-            ps.setDate(4, r.getSubmit());
+            ps.setString(4, r.getSubmit());
             ps.setString(5, r.getResolvedBy());
-            ps.setDate(6, r.getResolved());
+            ps.setString(6, r.getResolved());
             ps.setString(7, r.getDescription());
             ps.setString(8, "Placeholder");     //Placeholder for receipt
-            ps.setInt(9, r.getStatus().ordinal());
+            ps.setInt(9, r.getType().ordinal());
 
-            ps.executeUpdate();
+            int rowsAffected = ps.executeUpdate();
+            if(rowsAffected == 1) {
+                return true;
+            }
         }
         catch (SQLException e){
 
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
@@ -56,9 +64,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
             r.setEmployee(u);
             r.setType(ReimbursementType.values()[rs.getInt(3)]);
             r.setAmount(rs.getDouble(4));
-            r.setSubmit(rs.getDate(5));
+            r.setSubmit(rs.getString(5));
             r.setResolvedBy(rs.getString(6));
-            r.setResolved(rs.getDate(7));
+            r.setResolved(rs.getString(7));
             r.setDescription(rs.getString(8));
             r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
 
@@ -87,9 +95,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setEmployee(u);
                 r.setType(ReimbursementType.values()[rs.getInt(3)]);
                 r.setAmount(rs.getDouble(4));
-                r.setSubmit(rs.getDate(5));
+                r.setSubmit(rs.getString(5));
                 r.setResolvedBy(rs.getString(6));
-                r.setResolved(rs.getDate(7));
+                r.setResolved(rs.getString(7));
                 r.setDescription(rs.getString(8));
                 r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
 
@@ -121,9 +129,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setEmployee(u);
                 r.setType(ReimbursementType.values()[rs.getInt(3)]);
                 r.setAmount(rs.getDouble(4));
-                r.setSubmit(rs.getDate(5));
+                r.setSubmit(rs.getString(5));
                 r.setResolvedBy(rs.getString(6));
-                r.setResolved(rs.getDate(7));
+                r.setResolved(rs.getString(7));
                 r.setDescription(rs.getString(8));
                 r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
 
@@ -155,9 +163,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setEmployee(u);
                 r.setType(ReimbursementType.values()[rs.getInt(3)]);
                 r.setAmount(rs.getDouble(4));
-                r.setSubmit(rs.getDate(5));
+                r.setSubmit(rs.getString(5));
                 r.setResolvedBy(rs.getString(6));
-                r.setResolved(rs.getDate(7));
+                r.setResolved(rs.getString(7));
                 r.setDescription(rs.getString(8));
                 r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
 
@@ -190,9 +198,9 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setEmployee(u);
                 r.setType(ReimbursementType.values()[rs.getInt(3)]);
                 r.setAmount(rs.getDouble(4));
-                r.setSubmit(rs.getDate(5));
+                r.setSubmit(rs.getString(5));
                 r.setResolvedBy(rs.getString(6));
-                r.setResolved(rs.getDate(7));
+                r.setResolved(rs.getString(7));
                 r.setDescription(rs.getString(8));
                 r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
 
