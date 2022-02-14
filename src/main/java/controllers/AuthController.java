@@ -28,13 +28,13 @@ public class AuthController {
 
         User u = us.getUserByEmail(lo.email);
 
-        context.req.getSession().setAttribute("id", "" + u.getUserID());
-        context.req.getSession().setAttribute("loggedIn", u.getEmail());
-        context.req.getSession().setAttribute("role", "" + u.getRole());
+        context.req.getSession().setAttribute("user-id", "" + u.getUserID());
+        context.req.getSession().setAttribute("logged-in", u.getEmail());
+        context.req.getSession().setAttribute("user-role", "" + u.getRole());
 
-        context.header("pid", "" + u.getUserID());
-        context.header("loggedIn", u.getEmail());
-        context.header("role", "" + u.getRole());
+        context.header("user-id", "" + u.getUserID());
+        context.header("logged-in", u.getEmail());
+        context.header("user-role", "" + u.getRole());
     };
 
     public Handler verify = context -> {
