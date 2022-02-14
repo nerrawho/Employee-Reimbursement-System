@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="services.UserServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-10T19:32:00" hostname="MacBooks-MBP.lan" time="10.534">
+<testsuite name="services.UserServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-11T19:53:56" hostname="MacBooks-MBP.lan" time="10.388">
   <properties/>
-  <testcase name="createUserShouldReturnNewUser" classname="services.UserServiceTest" time="10.534"/>
-  <system-out><![CDATA[2022-02-10 14:32:01 INFO  LoggingSingleton:20 - New user created: User{userID=0, role=MANAGER, username='username', password='password', first='first', last='last', email='first.last@mbasb.org'}
-]]></system-out>
+  <testcase name="deleteUserShouldDeleteUser" classname="services.UserServiceTest" time="10.388"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[org.postgresql.util.PSQLException: The connection attempt failed.
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:313)
 	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51)
@@ -13,9 +12,9 @@
 	at java.sql.DriverManager.getConnection(DriverManager.java:664)
 	at java.sql.DriverManager.getConnection(DriverManager.java:247)
 	at utils.ConnectionUtil.getConnection(ConnectionUtil.java:20)
-	at daos.UserDaoImp.createUser(UserDaoImp.java:18)
-	at services.UserService.createUser(UserService.java:21)
-	at services.UserServiceTest.createUserShouldReturnNewUser(UserServiceTest.java:35)
+	at daos.UserDaoImp.deleteUser(UserDaoImp.java:160)
+	at services.UserService.deleteUser(UserService.java:49)
+	at services.UserServiceTest.deleteUserShouldDeleteUser(UserServiceTest.java:73)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

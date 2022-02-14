@@ -16,7 +16,9 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.sql.Date;
+import java.util.List;
 
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 
@@ -45,6 +47,8 @@ public class ReimbursementServiceTest extends TestCase {
 
     @Test
     public void testGetReimbursementByEmployee() {
+        List<Reimbursement> test = rs.getAllReimbursement();
+        assertNotNull(test);
     }
 
     @Test
@@ -65,5 +69,9 @@ public class ReimbursementServiceTest extends TestCase {
 
     @Test
     public void testDeleteReimbursement() {
+    }
+
+    private class DataMigrationService
+    {
     }
 }

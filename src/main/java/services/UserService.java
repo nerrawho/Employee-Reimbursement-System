@@ -11,6 +11,10 @@ public class UserService
 {
     private final UserDao userDao = new UserDaoImp();
 
+    public UserService(UserDao ud)
+    {
+    }
+
     public boolean createUser(String username, String password, String first, String last, UserRole role)
     {
         String email = first+"."+last+"@MBASB.org";
@@ -44,8 +48,9 @@ public class UserService
         userDao.updateUser(u);
         return false;
     }
-    public void deleteUser(User u)
+    public User deleteUser(User u)
     {
         userDao.deleteUser(u);
+        return null;
     }
 }
