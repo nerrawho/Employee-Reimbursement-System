@@ -4,3 +4,7 @@
 2022-02-14 14:57:39 INFO  LoggingSingleton:32 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=0, role=EMPLOYEE, username='username', password='password', first='first', last='last', email='email'}, type=FOOD, amount=55.55, submit='02/14/2022', resolvedBy='null', resolved='null', description='this is a test', status=PENDING}
 2022-02-14 14:58:47 INFO  LoggingSingleton:32 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=0, role=EMPLOYEE, username='username', password='password', first='first', last='last', email='email'}, type=FOOD, amount=55.55, submit='02/14/2022', resolvedBy='null', resolved='null', description='this is a test', status=PENDING}
 2022-02-14 14:59:31 INFO  LoggingSingleton:32 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=0, role=EMPLOYEE, username='username', password='password', first='first', last='last', email='email'}, type=FOOD, amount=55.55, submit='02/14/2022', resolvedBy='null', resolved='null', description='this is a test', status=PENDING}
+2022-02-14 16:58:54 INFO  LoggingSingleton:19 - Login Denied: superman@dc.com
+2022-02-14 17:11:18 INFO  LoggingSingleton:19 - Login Denied: superman@dc.com
+2022-02-14 17:16:51 INFO  LoggingSingleton:19 - Login Denied: superman@dc.com
+2022-02-14 17:17:00 INFO  LoggingSingleton:19 - Login Denied: superman@dc.com
