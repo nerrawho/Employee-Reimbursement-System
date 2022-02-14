@@ -42,7 +42,7 @@ public class UserDaoImp implements UserDao
         try (Connection c = ConnectionUtil.getConnection();
              PreparedStatement ps = c.prepareStatement(sql);)
         {
-            ResultSet rs = ps.executeQuery(sql);
+            ResultSet rs = ps.executeQuery();
             while (rs.next())
             {
                 User u = new User();
