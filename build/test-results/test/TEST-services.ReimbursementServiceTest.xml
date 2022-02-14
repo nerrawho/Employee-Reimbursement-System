@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="services.ReimbursementServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-02-14T19:42:45" hostname="LAPTOP-FF56CRCN" time="0.05">
+<testsuite name="services.ReimbursementServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-02-14T19:59:31" hostname="LAPTOP-FF56CRCN" time="0.049">
   <properties/>
-  <testcase name="testCreateReimbursementReturnsReimbursement" classname="services.ReimbursementServiceTest" time="0.05">
+  <testcase name="testCreateReimbursementReturnsReimbursement" classname="services.ReimbursementServiceTest" time="0.049">
     <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
 	at services.ReimbursementService.createReimbursement(ReimbursementService.java:34)
 	at services.ReimbursementServiceTest.testCreateReimbursementReturnsReimbursement(ReimbursementServiceTest.java:40)
@@ -50,7 +50,7 @@
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <system-out><![CDATA[2022-02-14 14:42:45 INFO  LoggingSingleton:32 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=0, role=EMPLOYEE, username='username', password='password', first='first', last='last', email='email'}, type=FOOD, amount=55.55, submit='02/14/2022', resolvedBy='null', resolved='null', description='this is a test', status=PENDING}
+  <system-out><![CDATA[2022-02-14 14:59:31 INFO  LoggingSingleton:32 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=0, role=EMPLOYEE, username='username', password='password', first='first', last='last', email='email'}, type=FOOD, amount=55.55, submit='02/14/2022', resolvedBy='null', resolved='null', description='this is a test', status=PENDING}
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
