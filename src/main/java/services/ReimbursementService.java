@@ -1,6 +1,7 @@
 package services;
 
 import daos.ReimbursementDao;
+import daos.ReimbursementDaoImp;
 import models.Reimbursement;
 import models.ReimbursementStatus;
 import models.ReimbursementType;
@@ -9,6 +10,7 @@ import utils.LoggingSingleton;
 
 import java.util.List;
 import java.sql.Date;
+import java.util.Locale;
 
 public class ReimbursementService {
 
@@ -24,7 +26,7 @@ public class ReimbursementService {
     //Method to create reimbursement with minimal parameters
     public boolean createReimbursement(User u, String type, double amount, String description) {
 
-        ReimbursementType t = ReimbursementType.valueOf(type);
+        ReimbursementType t = ReimbursementType.valueOf(type.trim().toUpperCase(Locale.ROOT));
         Reimbursement r = new Reimbursement(u, t, amount, description);
 
         LoggingSingleton.logger.info("New reimbursement created: " + r.toString());

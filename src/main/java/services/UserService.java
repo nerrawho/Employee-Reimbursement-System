@@ -7,19 +7,21 @@ import models.UserRole;
 
 import java.util.List;
 
-public class UserService {
-
+public class UserService
+{
     private UserDao ud;
 
-    public UserService() {
-
+    public UserService()
+    {
     }
 
-    public UserService(UserDao ud) {
+    public UserService(UserDao ud)
+    {
         this.ud = ud;
     }
 
     private final UserDao userDao = new UserDaoImp();
+
 
     public boolean createUser(String username, String password, String first, String last, UserRole role)
     {
@@ -54,8 +56,9 @@ public class UserService {
         userDao.updateUser(u);
         return false;
     }
-    public void deleteUser(User u)
+    public User deleteUser(User u)
     {
         userDao.deleteUser(u);
+        return null;
     }
 }

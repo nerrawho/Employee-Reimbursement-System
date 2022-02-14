@@ -1,0 +1,1 @@
+ê2022-02-14 14:42:45 INFO  LoggingSingleton:32 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=0, role=EMPLOYEE, username='username', password='password', first='first', last='last', email='email'}, type=FOOD, amount=55.55, submit='02/14/2022', resolvedBy='null', resolved='null', description='this is a test', status=PENDING}
