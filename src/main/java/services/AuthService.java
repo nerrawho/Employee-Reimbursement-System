@@ -2,6 +2,7 @@ package services;
 
 import daos.UserDao;
 import models.User;
+import utils.LoggingSingleton;
 
 public class AuthService {
 
@@ -15,8 +16,10 @@ public class AuthService {
         User login = ud.readUserByEmail(email);
 
         if(login == null || !login.getPassword().equals(password)) {
+            LoggingSingleton.logger.info("Login Denied: " + email);
             return false;
         }
+        LoggingSingleton.logger.info("Login Approved: " + email);
         return true;
     }
 }

@@ -2,23 +2,16 @@ package services;
 
 import daos.ReimbursementDao;
 
+import daos.UserDao;
 import junit.framework.TestCase;
 import models.Reimbursement;
-import models.ReimbursementStatus;
 import models.ReimbursementType;
 import models.User;
-
+import models.UserRole;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 
-import java.sql.Date;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
 
 public class ReimbursementServiceTest extends TestCase {
 
@@ -28,19 +21,23 @@ public class ReimbursementServiceTest extends TestCase {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Mock
+    @Spy
     static ReimbursementDao rd;
 
     @InjectMocks
-    private static ReimbursementService rs;
+    private static ReimbursementService rs = new ReimbursementService(rd);
+
+    @Spy static UserDao ud;
+
+    @InjectMocks
+    private static UserService us;
 
 
 
     public void testCreateReimbursementReturnsReimbursement() {
-
-        //Reimbursement test = rs.createReimbursement(new User(), ReimbursementType.FOOD,55.55, , "Steve", new Date(System.currentTimeMillis()), "Golden Carrots", ReimbursementStatus.APPROVED);
-
-        //assertNotNull(test);
+        User test = new User("username", "password", "first", "last", "email", UserRole.EMPLOYEE);
+        Reimbursement test_reimbursement = new Reimbursement();
+        assertTrue(rs.createReimbursement(test, "food", 55.55, "this is a test"));
     }
 
     @Test

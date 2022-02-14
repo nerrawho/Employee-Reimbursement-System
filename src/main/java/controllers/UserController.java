@@ -1,60 +1,94 @@
 package controllers;
-
 import io.javalin.http.Context;
 import models.User;
 import services.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.javalin.http.Handler;
+import utils.LoggingSingleton;
 
-import java.util.List;
 
 public class UserController
 {
-    private final UserService userService = new UserService();
 
-    public void handleGetAll(Context ctx)
+    private UserService us;
+    private ObjectMapper mapper = new ObjectMapper();
+
+    public UserController(UserService us)
     {
-        List<User> uList = userService.getAllUser();
-        ctx.json(uList);
+        this.us = us;
     }
 
-    public void handleGetOne(Context ctx)
+    public Handler createUser = (context) ->
     {
-        String idParam = ctx.pathParam("id");
-        int id = Integer.parseInt(idParam);
-        User user = userService.getUserById(id);
-        ctx.json(user);
-    }
 
-    public void handleUpdate(Context ctx)
+        User u = mapper.readValue(context.body(), User.class);
+
+        System.out.println(u);
+
+        us.createUser(u.getUsername(), u.getPassword(), u.getFirst(), u.getLast(), u.getRole());
+
+        context.result(mapper.writeValueAsString(u));
+
+    };
+
+    public Handler getAllUser = (context) ->
     {
-        String idParam = ctx.pathParam("id");
-        User userToUpdate = ctx.bodyAsClass(User.class);
-        int idToUpdate = Integer.parseInt(idParam);
-        userToUpdate.setUserID(idToUpdate);
+        context.result(mapper.writeValueAsString(us.getAllUser()));
+    };
 
-        boolean success = userService.updateUser(userToUpdate);
-        if(success)
+    public Handler getUserById = (context) ->
+    {
+
+        Integer id = Integer.parseInt(context.pathParam("id"));
+
+        context.result(mapper.writeValueAsString(us.getUserById(id)));
+
+    };
+    public Handler getUserByEmail = (context) ->
+    {
+        String userParam = String.valueOf(context.pathParam("email"));
+        context.result(mapper.writeValueAsString(us.getUserByEmail("")));
+
+    };
+
+    public Handler updateUser = (context) ->
+    {
+        String userParam = String.valueOf(context.req.getSession().getAttribute("loggedIn"));
+        try
         {
-            ctx.status(200);
-        } else {
-            ctx.status(400);
-        }
-    }
+            mapper.readValue(context.body(), User.class);
 
-    public void handleCreate(Context ctx)
-    {
-        User newUser = ctx.bodyAsClass(User.class);
-        boolean success = userService.createUser(newUser);
+            User user = us.getUserByEmail(userParam);
 
-        if(success)
+            LoggingSingleton.logger.info(user.getRole() + " " + user.getFirst() + " " + user.getLast() +
+                    " has updated their personal information");
+
+            context.result(mapper.writeValueAsString(us.updateUser(user)));
+
+        } catch (Exception e)
         {
-            ctx.status(201);
-        } else{
-            ctx.status(400);
+            context.status(400);
+            e.printStackTrace();
         }
-    }
+    };
 
-    public void handleDelete(Context ctx)
+    public Handler deleteUser = (context) ->
     {
-        ctx.status(405);
-    }
+        String userParam = String.valueOf(context.req.getSession().getAttribute("delete"));
+        try
+        {
+            mapper.readValue(context.body(), User.class);
+
+            User user = us.getUserByEmail(userParam);
+
+            LoggingSingleton.logger.info(user.getRole() + " " + user.getFirst() + " " + user.getLast() +
+                    "was deleted");
+            context.result(mapper.writeValueAsString(us.deleteUser(user)));
+        } catch (Exception e)
+        {
+            context.status(400);
+            e.printStackTrace();
+        }
+    };
+
 }
