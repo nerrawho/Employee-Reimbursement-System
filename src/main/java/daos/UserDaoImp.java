@@ -76,7 +76,7 @@ public class UserDaoImp implements UserDao
              PreparedStatement ps = c.prepareStatement(sql);)
         {
             ps.setInt(1,id);
-            ResultSet rs = ps.executeQuery(sql);
+            ResultSet rs = ps.executeQuery();
             if (rs.next())
             {
                 User u = new User();
@@ -105,7 +105,7 @@ public class UserDaoImp implements UserDao
         try (Connection c = ConnectionUtil.getConnection();
              PreparedStatement ps = c.prepareStatement(sql);) {
             ps.setString(1,email);
-            ResultSet rs = ps.executeQuery(sql);
+            ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 User u = new User();
@@ -141,7 +141,7 @@ public class UserDaoImp implements UserDao
             ps.setString(4, u.getPassword());
             ps.setString(5, u.getEmail());
             ps.setInt(6, u.getRole().ordinal());
-            int rowsAffected = ps.executeUpdate(sql);
+            int rowsAffected = ps.executeUpdate();
 
             if(rowsAffected==1){
                 return true;

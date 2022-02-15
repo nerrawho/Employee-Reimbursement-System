@@ -1,6 +1,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import daos.ReimbursementDaoImp;
 import io.javalin.http.Handler;
 import models.*;
 import services.ReimbursementService;
@@ -11,8 +12,8 @@ import java.util.List;
 
 public class ReimbursementController {
 
-    private ReimbursementService rs;
-    private UserService us;
+    private ReimbursementService rs = new ReimbursementService();
+    private UserService us = new UserService();
     private ObjectMapper mapper = new ObjectMapper();
 
     public ReimbursementController(ReimbursementService rs, UserService ps) {
@@ -140,6 +141,34 @@ public class ReimbursementController {
             rs.deleteReimbursement(rToDelete);
         }
 
+    };
+
+    public Handler getPendingForEmployee = context -> {
+        context.header("Access-Control-Expose-Headers", "*");
+        String email = String.valueOf(context.req.getSession().getAttribute("logged-in"));
+        User u = us.getUserByEmail(email);
+
+        List<Reimbursement> list = rs.getPendingForEmployee(u);
+        context.json(list);
+    };
+
+    public Handler getResolvedForEmployee = context -> {
+        context.header("Access-Control-Expose-Headers", "*");
+        String email = String.valueOf(context.req.getSession().getAttribute("logged-in"));
+        User u = us.getUserByEmail(email);
+
+        List<Reimbursement> list = rs.getResolvedForEmployee(u);
+        context.json(list);
+    };
+
+    public Handler getAllPendingReimbursement = context -> {
+        List<Reimbursement> list = rs.getAllPendingReimbursement();
+        context.json(list);
+    };
+
+    public Handler getAllResolvedReimbursement = context -> {
+        List<Reimbursement> list = rs.getAllResolvedReimbursement();
+        context.json(list);
     };
 
 
