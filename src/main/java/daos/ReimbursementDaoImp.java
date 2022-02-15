@@ -251,4 +251,146 @@ public class ReimbursementDaoImp implements ReimbursementDao{
             e.printStackTrace();
         }
     }
+
+    @Override
+    public List<Reimbursement> readAllPendingEmployee(int employeeId) {
+
+        List<Reimbursement> list= new ArrayList<Reimbursement>();
+
+        String sql = "SELECT * FROM reimbursement WHERE user_id = " + employeeId + " AND status = 1";
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement s = c.prepareStatement(sql);) {
+
+            ResultSet rs = s.executeQuery();
+
+            while(rs.next()) {
+                Reimbursement r = new Reimbursement();
+                r.setReimbursementID(rs.getInt(1));
+                User u = new User();
+                u.setUserID(rs.getInt(2));
+                r.setEmployee(u);
+                r.setType(ReimbursementType.values()[rs.getInt(3)]);
+                r.setAmount(rs.getDouble(4));
+                r.setSubmit(rs.getString(5));
+                r.setResolvedBy(rs.getString(6));
+                r.setResolved(rs.getString(7));
+                r.setDescription(rs.getString(8));
+                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+
+                list.add(r);
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Reimbursement> readAllResolvedEmployee(int employeeId) {
+
+        List<Reimbursement> list= new ArrayList<Reimbursement>();
+
+        String sql = "SELECT * FROM reimbursement WHERE user_id = " + employeeId + " AND resolved != null";
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement s = c.prepareStatement(sql);) {
+
+            ResultSet rs = s.executeQuery();
+
+            while(rs.next()) {
+                Reimbursement r = new Reimbursement();
+                r.setReimbursementID(rs.getInt(1));
+                User u = new User();
+                u.setUserID(rs.getInt(2));
+                r.setEmployee(u);
+                r.setType(ReimbursementType.values()[rs.getInt(3)]);
+                r.setAmount(rs.getDouble(4));
+                r.setSubmit(rs.getString(5));
+                r.setResolvedBy(rs.getString(6));
+                r.setResolved(rs.getString(7));
+                r.setDescription(rs.getString(8));
+                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+
+                list.add(r);
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Reimbursement> readAllPendingReimbursement() {
+
+        List<Reimbursement> list= new ArrayList<Reimbursement>();
+
+        String sql = "SELECT * FROM reimbursement WHERE status = 1";
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement s = c.prepareStatement(sql);) {
+
+            ResultSet rs = s.executeQuery();
+
+            while(rs.next()) {
+                Reimbursement r = new Reimbursement();
+                r.setReimbursementID(rs.getInt(1));
+                User u = new User();
+                u.setUserID(rs.getInt(2));
+                r.setEmployee(u);
+                r.setType(ReimbursementType.values()[rs.getInt(3)]);
+                r.setAmount(rs.getDouble(4));
+                r.setSubmit(rs.getString(5));
+                r.setResolvedBy(rs.getString(6));
+                r.setResolved(rs.getString(7));
+                r.setDescription(rs.getString(8));
+                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+
+                list.add(r);
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Reimbursement> readAllResolvedReimbursement() {
+
+        List<Reimbursement> list= new ArrayList<Reimbursement>();
+
+        String sql = "SELECT * FROM reimbursement WHERE resolved != null";
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement s = c.prepareStatement(sql);) {
+
+            ResultSet rs = s.executeQuery();
+
+            while(rs.next()) {
+                Reimbursement r = new Reimbursement();
+                r.setReimbursementID(rs.getInt(1));
+                User u = new User();
+                u.setUserID(rs.getInt(2));
+                r.setEmployee(u);
+                r.setType(ReimbursementType.values()[rs.getInt(3)]);
+                r.setAmount(rs.getDouble(4));
+                r.setSubmit(rs.getString(5));
+                r.setResolvedBy(rs.getString(6));
+                r.setResolved(rs.getString(7));
+                r.setDescription(rs.getString(8));
+                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+
+                list.add(r);
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+
 }

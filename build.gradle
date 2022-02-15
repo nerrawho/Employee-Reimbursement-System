@@ -38,6 +38,10 @@ dependencies {
 
 }
 
+test {
+    useJUnit()
+}
+
 application {
     mainClass = 'EmployeeReimbursementDriver'
 }

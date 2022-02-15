@@ -29,7 +29,10 @@ public class JavalinDriver {
     private static AuthController ac = new AuthController(as, us);
 
     public static void main(String[] args) {
-        Javalin app = Javalin.create();
+        Javalin app = Javalin.create(config -> {
+            config.enableCorsForAllOrigins();
+            config.addStaticFiles("/static", Location.CLASSPATH);
+        });;
 
         Route user = new UserRoute(uc);
         Route reimbursement = new ReimbursementRoute(rc);

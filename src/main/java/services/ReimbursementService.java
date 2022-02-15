@@ -16,6 +16,7 @@ public class ReimbursementService {
 
     private ReimbursementDao rd;
 
+
     public ReimbursementService() {
     }
 
@@ -29,9 +30,9 @@ public class ReimbursementService {
         ReimbursementType t = ReimbursementType.valueOf(type.trim().toUpperCase(Locale.ROOT));
         Reimbursement r = new Reimbursement(u, t, amount, description);
 
-        LoggingSingleton.logger.info("New reimbursement created: " + r.toString());
 
         if(rd.createReimbursement(r)) {
+            LoggingSingleton.logger.info("New reimbursement created: " + r.toString());
             return true;
         }
         else
@@ -86,6 +87,26 @@ public class ReimbursementService {
     public void deleteReimbursement(Reimbursement r) {
         LoggingSingleton.logger.info("Deleted: " + r.toString());
         rd.deleteReimbursement(r);
+    }
+
+    //Method to return a list of reimbursements by the user ID.
+    public List<Reimbursement> getPendingForEmployee(User u) {
+        return rd.readAllPendingEmployee(u.getUserID());
+    }
+
+    //Method to return a list of reimbursements by the user ID.
+    public List<Reimbursement> getResolvedForEmployee(User u) {
+        return rd.readAllResolvedEmployee(u.getUserID());
+    }
+
+    //Method to return a list of all reimbursements.
+    public List<Reimbursement> getAllPendingReimbursement() {
+        return rd.readAllPendingReimbursement();
+    }
+
+    //Method to return a list of all reimbursements.
+    public List<Reimbursement> getAllResolvedReimbursement() {
+        return rd.readAllResolvedReimbursement();
     }
 
 }

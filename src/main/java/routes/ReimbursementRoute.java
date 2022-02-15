@@ -21,5 +21,9 @@ public class ReimbursementRoute extends Route {
         app.get("/reimbursement/{id}", rc.getReimbursementById);
         app.put("/reimbursement/{id}" , rc.updateReimbursement);
         app.delete("/reimbursement/{id}", rc.deleteReimbursement);
+        app.get("/employee/get-all-pending", rc.getPendingForEmployee);
+        app.get("/employee/get-all-resolved", rc.getResolvedForEmployee);
+        app.get("/manager/get-all-pending", rc.getAllPendingReimbursement);
+        app.get("/manager/get-all-resolved", rc.getAllResolvedReimbursement);
     }
 }
