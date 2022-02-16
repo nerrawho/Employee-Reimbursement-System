@@ -35,6 +35,8 @@ public class AuthController {
         context.header("user-id", "" + u.getUserID());
         context.header("logged-in", u.getEmail());
         context.header("user-role", "" + u.getRole());
+
+        context.result("You Are Signed In!");
     };
 
     public Handler verify = context -> {
