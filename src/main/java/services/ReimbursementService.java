@@ -109,4 +109,13 @@ public class ReimbursementService {
         return rd.readAllResolvedReimbursement();
     }
 
+    public void approve(Reimbursement r) {
+        LoggingSingleton.logger.info("Reimbursement" + r.getReimbursementID() + " Approved");
+        rd.sendApprove(r);
+    }
+
+    public void deny(Reimbursement r) {
+        LoggingSingleton.logger.info("Reimbursement" + r.getReimbursementID() + " Denied");
+        rd.sendDeny(r);
+    }
 }

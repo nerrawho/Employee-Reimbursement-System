@@ -25,5 +25,7 @@ public class ReimbursementRoute extends Route {
         app.get("/reimbursement/employee/resolved", rc.getResolvedForEmployee);
         app.get("/reimbursement/manager/pending", rc.getAllPendingReimbursement);
         app.get("/reimbursement/manager/resolved", rc.getAllResolvedReimbursement);
+        app.put("/reimbursement/manager/approve", rc.approve);
+        app.put("/reimbursement/manager/deny", rc.deny);
     }
 }

@@ -110,7 +110,7 @@ public class UserDaoImp implements UserDao
             if (rs.next()) {
                 User u = new User();
                 u.setUserID(rs.getInt("id"));
-                int roleOrdinal = rs.getInt("type");
+                int roleOrdinal = rs.getInt("type") - 1;
                 UserRole[] role = UserRole.values();
                 u.setRole(role[roleOrdinal]);
 

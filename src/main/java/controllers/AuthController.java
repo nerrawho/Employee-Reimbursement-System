@@ -42,12 +42,12 @@ public class AuthController {
     public Handler verify = context -> {
         context.header("Access-Control-Expose-Headers", "*");
 
-        if(context.req.getSession().getAttribute("id") == null) {
+        if(context.req.getSession().getAttribute("user_id") == null) {
             context.status(400);
             context.result("User not logged in");
         }
         else {
-            context.header("pid", "" + context.req.getSession().getAttribute("id"));
+            context.header("pid", "" + context.req.getSession().getAttribute("user_id"));
             context.result("User verified");
         }
     };

@@ -171,7 +171,32 @@ public class ReimbursementController {
         context.json(list);
     };
 
+    public Handler approve = context -> {
 
+        RID rid = mapper.readValue(context.body(), RID.class);
+        Integer reimbursementId = Integer.parseInt(rid.id);
+        Reimbursement r = new Reimbursement();
+        r.setReimbursementID(reimbursementId);
+
+        rs.approve(r);
+    };
+
+    public Handler deny = context -> {
+
+        RID rid = mapper.readValue(context.body(), RID.class);
+        Integer reimbursementId = Integer.parseInt(rid.id);
+        Reimbursement r = new Reimbursement();
+        r.setReimbursementID(reimbursementId);
+
+        rs.deny(r);
+
+    };
+
+
+}
+
+class RID {
+    public String id;
 }
 
 class Ticket {

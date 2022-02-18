@@ -40,3 +40,14 @@
 2022-02-15 17:47:13 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
 2022-02-15 17:47:29 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
 2022-02-15 17:50:40 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-17 12:59:20 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-17 12:59:44 INFO  LoggingSingleton:35 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=5, role=EMPLOYEE, username='batman', password='alfred', first='Bruce', last='Wayne', email='imbatman@dc.com'}, type=TRAVEL, amount=2342.23, submit='02/17/2022', resolvedBy='null', resolved='null', description='test', status=PENDING}
+2022-02-17 13:26:52 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-17 13:33:33 INFO  LoggingSingleton:35 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=5, role=EMPLOYEE, username='batman', password='alfred', first='Bruce', last='Wayne', email='imbatman@dc.com'}, type=TRAVEL, amount=2342.23, submit='02/17/2022', resolvedBy='null', resolved='null', description='test', status=PENDING}
+2022-02-17 13:41:46 INFO  LoggingSingleton:35 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=5, role=EMPLOYEE, username='batman', password='alfred', first='Bruce', last='Wayne', email='imbatman@dc.com'}, type=TRAVEL, amount=2342.23, submit='02/17/2022', resolvedBy='null', resolved='null', description='test', status=PENDING}
+2022-02-18 02:06:32 INFO  LoggingSingleton:35 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=5, role=EMPLOYEE, username='batman', password='alfred', first='Bruce', last='Wayne', email='imbatman@dc.com'}, type=FOOD, amount=2342.23, submit='02/18/2022', resolvedBy='null', resolved='null', description='test', status=PENDING}
+2022-02-18 02:06:59 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-18 02:07:06 INFO  LoggingSingleton:35 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=5, role=EMPLOYEE, username='batman', password='alfred', first='Bruce', last='Wayne', email='imbatman@dc.com'}, type=FOOD, amount=2342.23, submit='02/18/2022', resolvedBy='null', resolved='null', description='test', status=PENDING}
+2022-02-18 02:07:13 INFO  LoggingSingleton:35 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=5, role=EMPLOYEE, username='batman', password='alfred', first='Bruce', last='Wayne', email='imbatman@dc.com'}, type=FOOD, amount=2342.23, submit='02/18/2022', resolvedBy='null', resolved='null', description='test', status=PENDING}
+2022-02-18 02:08:53 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-18 02:11:03 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
