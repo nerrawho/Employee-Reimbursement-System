@@ -32,7 +32,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
             ps.setString(6, r.getResolved());
             ps.setString(7, r.getDescription());
             ps.setString(8, "Placeholder");     //Placeholder for receipt
-            ps.setInt(9, r.getType().ordinal());
+            ps.setInt(9, 2);
 
             int rowsAffected = ps.executeUpdate();
             if(rowsAffected == 1) {
@@ -68,7 +68,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
             r.setResolvedBy(rs.getString(6));
             r.setResolved(rs.getString(7));
             r.setDescription(rs.getString(8));
-            r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+            r.setStatus(ReimbursementStatus.values()[rs.getInt(10)-1]);
 
         } catch(SQLException e) {
             e.printStackTrace();
@@ -99,7 +99,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setResolvedBy(rs.getString(6));
                 r.setResolved(rs.getString(7));
                 r.setDescription(rs.getString(8));
-                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)-1]);
 
                 list.add(r);
             }
@@ -133,7 +133,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setResolvedBy(rs.getString(6));
                 r.setResolved(rs.getString(7));
                 r.setDescription(rs.getString(8));
-                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)-1]);
 
                 list.add(r);
             }
@@ -202,7 +202,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setResolvedBy(rs.getString(6));
                 r.setResolved(rs.getString(7));
                 r.setDescription(rs.getString(8));
-                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)-1]);
 
                 list.add(r);
             }
@@ -275,7 +275,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setResolvedBy(rs.getString(6));
                 r.setResolved(rs.getString(7));
                 r.setDescription(rs.getString(8));
-                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)-1]);
 
                 list.add(r);
             }
@@ -310,7 +310,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setResolvedBy(rs.getString(6));
                 r.setResolved(rs.getString(7));
                 r.setDescription(rs.getString(8));
-                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)-1]);
 
                 list.add(r);
             }
@@ -327,7 +327,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
 
         List<Reimbursement> list= new ArrayList<Reimbursement>();
 
-        String sql = "SELECT * FROM reimbursement WHERE status = 1";
+        String sql = "SELECT * FROM reimbursement WHERE status = 2";
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement s = c.prepareStatement(sql);) {
 
@@ -345,7 +345,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 r.setResolvedBy(rs.getString(6));
                 r.setResolved(rs.getString(7));
                 r.setDescription(rs.getString(8));
-                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)-1]);
 
                 list.add(r);
             }
@@ -362,7 +362,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
 
         List<Reimbursement> list= new ArrayList<Reimbursement>();
 
-        String sql = "SELECT * FROM reimbursement WHERE resolved != null";
+        String sql = "SELECT * FROM reimbursement WHERE status != 2";
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement s = c.prepareStatement(sql);) {
 
@@ -374,13 +374,13 @@ public class ReimbursementDaoImp implements ReimbursementDao{
                 User u = new User();
                 u.setUserID(rs.getInt(2));
                 r.setEmployee(u);
-                r.setType(ReimbursementType.values()[rs.getInt(3)]);
+                r.setType(ReimbursementType.values()[rs.getInt(3)+1]);
                 r.setAmount(rs.getDouble(4));
                 r.setSubmit(rs.getString(5));
                 r.setResolvedBy(rs.getString(6));
                 r.setResolved(rs.getString(7));
                 r.setDescription(rs.getString(8));
-                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)]);
+                r.setStatus(ReimbursementStatus.values()[rs.getInt(10)-1]);
 
                 list.add(r);
             }
@@ -392,5 +392,34 @@ public class ReimbursementDaoImp implements ReimbursementDao{
         return list;
     }
 
+    @Override
+    public void sendApprove(Reimbursement r) {
 
+        String sql = "UPDATE reimbursement SET status = 3, resolved = '" + r.getResolved() + "', resolved_by = '" + r.getResolvedBy() + "'  WHERE id = " + r.getReimbursementID();
+
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement s = c.prepareStatement(sql);) {
+
+            s.executeUpdate();
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void sendDeny(Reimbursement r) {
+
+        String sql = "UPDATE reimbursement SET status = 1, resolved = '" + r.getResolved() + "', resolved_by = '" + r.getResolvedBy() + "'  WHERE id = " + r.getReimbursementID();
+
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement s = c.prepareStatement(sql);) {
+
+            s.executeUpdate();
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

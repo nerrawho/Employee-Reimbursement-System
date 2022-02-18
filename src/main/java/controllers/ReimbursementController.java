@@ -58,9 +58,8 @@ public class ReimbursementController {
     };
 
     public Handler getReimbursementByEmployee = context -> {
-        context.header("Access-Control-Expose-Headers", "*");
-        String email = String.valueOf(context.req.getSession().getAttribute("logged-in"));
-        User u = us.getUserByEmail(email);
+        Integer id = Integer.parseInt(context.pathParam("id"));
+        User u = us.getUserById(id);
 
         List<Reimbursement> list = rs.getReimbursementByEmployee(u);
         context.json(list);
@@ -171,7 +170,35 @@ public class ReimbursementController {
         context.json(list);
     };
 
+    public Handler approve = context -> {
 
+        RID rid = mapper.readValue(context.body(), RID.class);
+        Integer reimbursementId = Integer.parseInt(rid.id);
+        Reimbursement r = new Reimbursement();
+        r.setResolvedBy(rid.managerName);
+        r.setReimbursementID(reimbursementId);
+
+        rs.approve(r);
+    };
+
+    public Handler deny = context -> {
+
+        RID rid = mapper.readValue(context.body(), RID.class);
+        Integer reimbursementId = Integer.parseInt(rid.id);
+        Reimbursement r = new Reimbursement();
+        r.setResolvedBy(rid.managerName);
+        r.setReimbursementID(reimbursementId);
+
+        rs.deny(r);
+
+    };
+
+
+}
+
+class RID {
+    public String id;
+    public String managerName;
 }
 
 class Ticket {

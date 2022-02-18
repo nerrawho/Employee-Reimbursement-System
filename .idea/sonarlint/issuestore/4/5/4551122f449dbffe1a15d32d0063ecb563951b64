@@ -1,0 +1,11 @@
+
+l
+java:S1104"QMake login a static final constant or non-public and provide accessors if needed.(×Ÿ°ìúÿÿÿÿ
+h
+java:S1104*"RMake verify a static final constant or non-public and provide accessors if needed.(ÿ¦·½
+m
+java:S11047"RMake logout a static final constant or non-public and provide accessors if needed.(‹İíöşÿÿÿÿ
+l
+java:S1104@"QMake email a static final constant or non-public and provide accessors if needed.(¾Æ†Ëıÿÿÿÿ
+o
+java:S1104A"TMake password a static final constant or non-public and provide accessors if needed.(¼şòüÿÿÿÿ

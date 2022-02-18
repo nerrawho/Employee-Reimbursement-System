@@ -19,4 +19,6 @@ public interface ReimbursementDao {
     public List<Reimbursement> readAllResolvedEmployee(int id);
     public List<Reimbursement> readAllPendingReimbursement();
     public List<Reimbursement> readAllResolvedReimbursement();
+    public void sendApprove(Reimbursement r);
+    public void sendDeny(Reimbursement r);
 }
