@@ -1,0 +1,27 @@
+
+input[type="RID"] {
+  margin-bottom: 0px;
+  border-bottom-right-radius: 50;
+  border-bottom-left-radius: 50;
+  width: 50;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+button {
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 0px 10px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 10px;
+    cursor: pointer;
+    background-color: rgb(43, 75, 145);
+    /* Blue */
+  }
