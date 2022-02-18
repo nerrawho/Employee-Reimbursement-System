@@ -1,0 +1,23 @@
+
+T
+java:S1128	"7Remove this unused import 'java.text.SimpleDateFormat'.(ú¡ÙÛ8²Ñäñð/
+G
+java:S1128"*Remove this unused import 'java.sql.Date'.(ÙÀ½Ê8²Ñäñð/
+o
+java:S2293R"YReplace the type specification in this constructor call with the diamond operator ("<>").(Í‹…Ó
+o
+java:S2293t"YReplace the type specification in this constructor call with the diamond operator ("<>").(Í‹…Ó
+p
+java:S2293–"YReplace the type specification in this constructor call with the diamond operator ("<>").(Í‹…Ó
+p
+java:S2293¹"YReplace the type specification in this constructor call with the diamond operator ("<>").(Í‹…Ó
+p
+java:S2293‚"YReplace the type specification in this constructor call with the diamond operator ("<>").(Í‹…Ó
+p
+java:S2293¥"YReplace the type specification in this constructor call with the diamond operator ("<>").(Í‹…Ó
+p
+java:S2293È"YReplace the type specification in this constructor call with the diamond operator ("<>").(Í‹…Ó
+p
+java:S2293ë"YReplace the type specification in this constructor call with the diamond operator ("<>").(Í‹…Ó
+ƒ
+java:S1192T"mDefine a constant instead of duplicating this literal "SELECT * FROM reimbursement WHERE user_id = " 3 times.(›‘×Þ

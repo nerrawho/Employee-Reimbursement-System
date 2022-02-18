@@ -49,7 +49,7 @@ public class UserDaoImp implements UserDao
                 int id = rs.getInt("id");
                 u.setUserID(id);
 
-                int roleOrdinal = rs.getInt("type");
+                int roleOrdinal = rs.getInt("type") - 1;
                 UserRole[] role = UserRole.values();
                 u.setRole(role[roleOrdinal]);
 
@@ -81,7 +81,7 @@ public class UserDaoImp implements UserDao
             {
                 User u = new User();
                 u.setUserID(id);
-                int roleOrdinal = rs.getInt("type");
+                int roleOrdinal = rs.getInt("type") - 1;
                 UserRole[] role = UserRole.values();
                 u.setRole(role[roleOrdinal]);
 

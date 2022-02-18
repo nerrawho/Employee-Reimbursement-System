@@ -362,7 +362,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
 
         List<Reimbursement> list= new ArrayList<Reimbursement>();
 
-        String sql = "SELECT * FROM reimbursement WHERE resolved != null";
+        String sql = "SELECT * FROM reimbursement WHERE status != 2";
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement s = c.prepareStatement(sql);) {
 
@@ -395,7 +395,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
     @Override
     public void sendApprove(Reimbursement r) {
 
-        String sql = "UPDATE reimbursement SET status = 3 WHERE id = " + r.getReimbursementID();
+        String sql = "UPDATE reimbursement SET status = 3, resolved = '" + r.getResolved() + "', resolved_by = '" + r.getResolvedBy() + "'  WHERE id = " + r.getReimbursementID();
 
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement s = c.prepareStatement(sql);) {
@@ -410,7 +410,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
     @Override
     public void sendDeny(Reimbursement r) {
 
-        String sql = "UPDATE reimbursement SET status = 1 WHERE id = " + r.getReimbursementID();
+        String sql = "UPDATE reimbursement SET status = 1, resolved = '" + r.getResolved() + "', resolved_by = '" + r.getResolvedBy() + "'  WHERE id = " + r.getReimbursementID();
 
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement s = c.prepareStatement(sql);) {

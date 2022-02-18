@@ -8,11 +8,15 @@ import models.ReimbursementType;
 import models.User;
 import utils.LoggingSingleton;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.sql.Date;
 import java.util.Locale;
 
 public class ReimbursementService {
+
+    SimpleDateFormat dateFormat =  new SimpleDateFormat("MM/dd/yyyy");
+    long currentDate = System.currentTimeMillis();
 
     private ReimbursementDao rd;
 
@@ -110,11 +114,13 @@ public class ReimbursementService {
     }
 
     public void approve(Reimbursement r) {
+        r.setResolved(dateFormat.format(currentDate));
         LoggingSingleton.logger.info("Reimbursement" + r.getReimbursementID() + " Approved");
         rd.sendApprove(r);
     }
 
     public void deny(Reimbursement r) {
+        r.setResolved(dateFormat.format(currentDate));
         LoggingSingleton.logger.info("Reimbursement" + r.getReimbursementID() + " Denied");
         rd.sendDeny(r);
     }
