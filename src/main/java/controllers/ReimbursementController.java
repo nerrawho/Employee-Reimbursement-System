@@ -9,6 +9,7 @@ import io.javalin.http.Context;
 import services.UserService;
 
 import java.util.List;
+import java.util.Locale;
 
 public class ReimbursementController {
 
@@ -26,6 +27,7 @@ public class ReimbursementController {
         Ticket tick = mapper.readValue(context.body(), Ticket.class);
 
         String email = tick.email;
+        System.out.println(email);
         String type = tick.type.trim().toUpperCase();
         Double amount = Double.parseDouble(tick.amount);
         String description = tick.description;

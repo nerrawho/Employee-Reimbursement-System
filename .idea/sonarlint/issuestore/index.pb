@@ -33,13 +33,7 @@ W
 +src/test/java/services/UserServiceTest.java,d\b\db42999dac662b4582bc8d0b1a1bb86960952986
 d
 4src/test/java/services/ReimbursementServiceTest.java,4\9\49c4aef9d477fe395b188e325bd59ed178094403
-N
-src/main/java/models/User.java,f\7\f7010c4f46d3b9dd8d59899249df5ba3ee23f96b
 S
 #src/main/java/routes/UserRoute.java,9\8\985d2aca20a25dbebd9642b3d4b59969551a0bb4
-]
--src/main/java/controllers/AuthController.java,4\5\4551122f449dbffe1a15d32d0063ecb563951b64
-W
-'src/main/java/services/UserService.java,f\8\f88b0fc904fcbbe4a39e1cd49ea74cc88d783b2c
 ]
 -src/main/java/controllers/UserController.java,3\a\3abf0e5c491599a520b3810b371a7e928bfc95ec
