@@ -257,7 +257,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
 
         List<Reimbursement> list= new ArrayList<Reimbursement>();
 
-        String sql = "SELECT * FROM reimbursement WHERE user_id = " + employeeId + " AND status = 1";
+        String sql = "SELECT * FROM reimbursement WHERE user_id = " + employeeId + " AND status = 2";
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement s = c.prepareStatement(sql);) {
 
@@ -292,7 +292,7 @@ public class ReimbursementDaoImp implements ReimbursementDao{
 
         List<Reimbursement> list= new ArrayList<Reimbursement>();
 
-        String sql = "SELECT * FROM reimbursement WHERE user_id = " + employeeId + " AND resolved != null";
+        String sql = "SELECT * FROM reimbursement WHERE user_id = " + employeeId + " AND status != 2";
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement s = c.prepareStatement(sql);) {
 

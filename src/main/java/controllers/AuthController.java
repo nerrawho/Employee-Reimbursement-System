@@ -8,6 +8,8 @@ import services.UserService;
 
 public class AuthController {
 
+    public static User sessionUser = new User();
+
     private AuthService as;
     private UserService us;
     private final ObjectMapper mapper = new ObjectMapper();
@@ -32,9 +34,12 @@ public class AuthController {
         context.req.getSession().setAttribute("logged-in", u.getEmail());
         context.req.getSession().setAttribute("user-role", "" + u.getRole());
 
+        sessionUser = u;
+
         context.header("user-id", "" + u.getUserID());
         context.header("logged-in", u.getEmail());
         context.header("user-role", "" + u.getRole());
+        context.header("Access-Control-Expose-Headers", "*");
 
         context.result("You Are Signed In!");
     };
@@ -42,18 +47,25 @@ public class AuthController {
     public Handler verify = context -> {
         context.header("Access-Control-Expose-Headers", "*");
 
-        if(context.req.getSession().getAttribute("user_id") == null) {
+        if(context.req.getSession().getAttribute("user-id") == null) {
             context.status(400);
             context.result("User not logged in");
         }
         else {
-            context.header("pid", "" + context.req.getSession().getAttribute("user_id"));
+            context.header("pid", "" + context.req.getSession().getAttribute("user-id"));
             context.result("User verified");
         }
     };
 
     public Handler logout = context -> {
         context.req.getSession().invalidate();
+        sessionUser.setUserID(0);
+        sessionUser.setEmail(null);
+        sessionUser.setFirst(null);
+        sessionUser.setLast(null);
+        sessionUser.setRole(null);
+        sessionUser.setUsername(null);
+        sessionUser.setPassword(null);
         context.status(200);
         context.result("Logged out");
     };

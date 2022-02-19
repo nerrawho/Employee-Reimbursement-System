@@ -9,6 +9,9 @@ import io.javalin.http.Context;
 import services.UserService;
 
 import java.util.List;
+import java.util.Locale;
+
+import static controllers.AuthController.sessionUser;
 
 public class ReimbursementController {
 
@@ -26,6 +29,7 @@ public class ReimbursementController {
         Ticket tick = mapper.readValue(context.body(), Ticket.class);
 
         String email = tick.email;
+        System.out.println(email);
         String type = tick.type.trim().toUpperCase();
         Double amount = Double.parseDouble(tick.amount);
         String description = tick.description;
@@ -143,19 +147,22 @@ public class ReimbursementController {
     };
 
     public Handler getPendingForEmployee = context -> {
-        context.header("Access-Control-Expose-Headers", "*");
-        String email = String.valueOf(context.req.getSession().getAttribute("logged-in"));
-        User u = us.getUserByEmail(email);
+        //context.header("Access-Control-Expose-Headers", "*");
+        //Integer userID = Integer.parseInt(String.valueOf(context.req.getSession().getAttribute("user-id")));
 
+        //User u = us.getUserById(userID);
+
+        User u = sessionUser;
         List<Reimbursement> list = rs.getPendingForEmployee(u);
         context.json(list);
     };
 
     public Handler getResolvedForEmployee = context -> {
-        context.header("Access-Control-Expose-Headers", "*");
-        String email = String.valueOf(context.req.getSession().getAttribute("logged-in"));
-        User u = us.getUserByEmail(email);
+        //context.header("Access-Control-Expose-Headers", "*");
+        //Integer userID = Integer.parseInt(String.valueOf(context.req.getSession().getAttribute("user-id")));
 
+        //User u = us.getUserById(userID);
+        User u = sessionUser;
         List<Reimbursement> list = rs.getResolvedForEmployee(u);
         context.json(list);
     };

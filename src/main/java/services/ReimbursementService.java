@@ -95,11 +95,13 @@ public class ReimbursementService {
 
     //Method to return a list of reimbursements by the user ID.
     public List<Reimbursement> getPendingForEmployee(User u) {
+        System.out.println(u.getUserID());
         return rd.readAllPendingEmployee(u.getUserID());
     }
 
     //Method to return a list of reimbursements by the user ID.
     public List<Reimbursement> getResolvedForEmployee(User u) {
+        System.out.println(u.getUserID());
         return rd.readAllResolvedEmployee(u.getUserID());
     }
 
