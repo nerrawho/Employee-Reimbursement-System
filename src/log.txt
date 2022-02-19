@@ -70,3 +70,43 @@
 2022-02-18 15:09:42 INFO  LoggingSingleton:39 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=0, role=EMPLOYEE, username='username', password='password', first='first', last='last', email='email'}, type=FOOD, amount=55.55, submit='02/18/2022', resolvedBy='null', resolved='null', description='this is a test', status=PENDING}
 2022-02-18 15:09:48 INFO  LoggingSingleton:39 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=0, role=EMPLOYEE, username='username', password='password', first='first', last='last', email='email'}, type=FOOD, amount=55.55, submit='02/18/2022', resolvedBy='null', resolved='null', description='this is a test', status=PENDING}
 2022-02-18 17:52:38 INFO  LoggingSingleton:39 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=7, role=MANAGER, username='flash', password='fast', first='Barry', last='Allen', email='barry.allen@mbasb.org'}, type=OTHER, amount=99.99, submit='02/18/2022', resolvedBy='null', resolved='null', description='omgpleasework', status=PENDING}
+2022-02-19 13:26:43 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:28:50 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:29:46 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:31:08 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:32:22 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:32:58 INFO  LoggingSingleton:19 - Login Denied: imbatman@dc.com
+2022-02-19 13:34:44 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:36:10 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:36:47 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:38:04 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:38:47 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:40:50 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:40:53 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:41:04 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:41:46 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:42:36 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 13:42:54 INFO  LoggingSingleton:22 - Login Approved: superman@dc.com
+2022-02-19 13:45:39 INFO  LoggingSingleton:22 - Login Approved: superman@dc.com
+2022-02-19 13:46:55 INFO  LoggingSingleton:22 - Login Approved: superman@dc.com
+2022-02-19 13:55:12 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:19:10 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:25:30 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:29:40 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:30:24 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:32:23 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:39:23 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:40:31 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:41:41 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:43:08 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:43:08 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:44:01 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:45:03 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:49:34 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:50:38 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:57:16 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 14:58:34 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 15:06:24 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 15:06:48 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 15:12:48 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 15:15:34 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com

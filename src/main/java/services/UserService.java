@@ -25,14 +25,14 @@ public class UserService
 
     public boolean createUser(String username, String password, String first, String last, UserRole role)
     {
-        String email = first+"."+last+"@MBASB.org";
+        String email = first+"."+last+"@dc.com";
         email = email.toLowerCase();
         User u = new User (username, password, first, last, email, role);
         return userDao.createUser(u);
     }
     public boolean createUser(User u)
     {
-        String email = u.getFirst()+"."+u.getLast()+"@MBASB.org";
+        String email = u.getFirst()+"."+u.getLast()+"@dc.com";
         email = email.toLowerCase();
         u.setEmail(email);
         return userDao.createUser(u);
