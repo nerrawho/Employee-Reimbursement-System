@@ -23,7 +23,7 @@ public class UserDaoImp implements UserDao
                 ps.setString(3, u.getUsername());
                 ps.setString(4, u.getPassword());
                 ps.setString(5, u.getEmail());
-                ps.setInt(6, u.getRole().ordinal());
+                ps.setInt(6, u.getRole().ordinal() + 1);
                 ps.executeUpdate();
             }
             catch (SQLException e)
@@ -140,7 +140,7 @@ public class UserDaoImp implements UserDao
             ps.setString(3, u.getUsername());
             ps.setString(4, u.getPassword());
             ps.setString(5, u.getEmail());
-            ps.setInt(6, u.getRole().ordinal());
+            ps.setInt(6, u.getRole().ordinal() + 1);
             int rowsAffected = ps.executeUpdate();
 
             if(rowsAffected==1){

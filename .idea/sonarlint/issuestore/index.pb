@@ -17,8 +17,6 @@ W
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 W
 'src/main/java/services/AuthService.java,2\2\222e36e5bc787f1f01f30c5594a95097235641d0
-S
-#src/main/java/routes/AuthRoute.java,a\5\a53d5e378e5773428777a1d06bdd71e2d32cec07
 ]
 -src/main/java/models/ReimbursementStatus.java,9\d\9d54783966c311cf5c5d061e916a786b08fa0d60
 O
@@ -31,5 +29,3 @@ d
 4src/test/java/services/ReimbursementServiceTest.java,4\9\49c4aef9d477fe395b188e325bd59ed178094403
 S
 #src/main/java/routes/UserRoute.java,9\8\985d2aca20a25dbebd9642b3d4b59969551a0bb4
-]
--src/main/java/controllers/UserController.java,3\a\3abf0e5c491599a520b3810b371a7e928bfc95ec

@@ -85,7 +85,6 @@ function getAllResolved() {
 
 }
 
-
 function getReimbursementByEmployeeId() {
 
     let id = document.getElementById("employeeID").value;

@@ -1,5 +1,5 @@
-let URL = 'http://localhost:7000';
 
+let URL = "http://localhost:7000"
 
 let loginBtn = document.getElementById('login').addEventListener('click', login);
 
