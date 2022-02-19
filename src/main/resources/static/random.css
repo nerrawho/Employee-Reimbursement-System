@@ -25,3 +25,17 @@ button {
     background-color: rgb(43, 75, 145);
     /* Blue */
   }
+
+button[id="logout"] {
+  border: none;
+    color: rgb(255, 255, 255);
+    padding: 0px 10px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 10px;
+    cursor: pointer;
+    background-color: transparent;
+    /* Blue */
+}

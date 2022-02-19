@@ -110,3 +110,10 @@
 2022-02-19 15:06:48 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
 2022-02-19 15:12:48 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
 2022-02-19 15:15:34 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 17:02:59 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-19 17:04:28 INFO  LoggingSingleton:22 - Login Approved: barry.allen@mbasb.org
+2022-02-19 17:11:12 INFO  LoggingSingleton:22 - Login Approved: yae.miko@dc.com
+2022-02-19 17:11:45 INFO  LoggingSingleton:39 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=10, role=EMPLOYEE, username='test', password='password', first='Yae', last='Miko', email='yae.miko@dc.com'}, type=FOOD, amount=1.11, submit='02/19/2022', resolvedBy='null', resolved='null', description='birbs', status=PENDING}
+2022-02-19 17:12:18 INFO  LoggingSingleton:39 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=10, role=EMPLOYEE, username='test', password='password', first='Yae', last='Miko', email='yae.miko@dc.com'}, type=TRAVEL, amount=2343.23, submit='02/19/2022', resolvedBy='null', resolved='null', description='inazuma', status=PENDING}
+2022-02-19 17:12:42 INFO  LoggingSingleton:22 - Login Approved: superman@dc.com
+2022-02-19 17:13:09 INFO  LoggingSingleton:120 - Reimbursement18 Approved
