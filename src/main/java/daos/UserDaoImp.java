@@ -131,7 +131,7 @@ public class UserDaoImp implements UserDao
     @Override
     public boolean updateUser(User u)
     {
-        String sql = "UPDATE users SET first = ?, last = ?, username = ?, password = ?, email = ?, type = ? where id = ? ";
+        String sql = "UPDATE users SET first = ?, last = ?, username = ?, password = ?, email = ?, type = ? WHERE id = ? ";
         try (Connection c = ConnectionUtil.getConnection();
              PreparedStatement ps = c.prepareStatement(sql);)
         {
@@ -141,6 +141,8 @@ public class UserDaoImp implements UserDao
             ps.setString(4, u.getPassword());
             ps.setString(5, u.getEmail());
             ps.setInt(6, u.getRole().ordinal() + 1);
+            ps.setInt(7,u.getUserID());
+
             int rowsAffected = ps.executeUpdate();
 
             if(rowsAffected==1){

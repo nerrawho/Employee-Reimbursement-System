@@ -9,7 +9,8 @@ function buildTable(data) {
 
     var table = document.getElementById('myTable');
     for(var i = 0; i < data.length; i++) {
-        var row = `<tr>
+        var row = 
+        `<tr>
             <td>${data[i].userID}</td>
             <td>${data[i].role}</td>
             <td>${data[i].username}</td>

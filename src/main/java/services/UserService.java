@@ -4,6 +4,7 @@ import daos.UserDao;
 import daos.UserDaoImp;
 import models.User;
 import models.UserRole;
+import utils.LoggingSingleton;
 
 import java.util.List;
 
@@ -51,11 +52,14 @@ public class UserService
     public User getUserByEmail(String email) {
         return userDao.readUserByEmail(email);
     }
-    public boolean updateUser(User u)
-    {
+
+
+    public void updateUser(User u) {
         userDao.updateUser(u);
-        return false;
+        LoggingSingleton.logger.info(u.getRole() + " " + u.getFirst() + " " + u.getLast() +
+                " has updated their personal information");
     }
+
     public User deleteUser(User u)
     {
         userDao.deleteUser(u);
