@@ -17,9 +17,9 @@ public class UserRoute extends Route
     public void registerLocalRoutes(Javalin app)
     {
         app.get("/user", uc.getAllUser);
-        app.get("/user/{id}", uc.getUserById);
+        app.get("/user/session", uc.getUserById);
         app.post("/user", uc.createUser);
-        app.get("/user/{email}/update", uc.updateUser);
+        app.put("/user/update", uc.updateUser);
         app.get("/user/{email}/delete", uc.deleteUser);
     }
 

@@ -6,6 +6,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.Handler;
 import utils.LoggingSingleton;
 
+import java.util.Locale;
+
+import static controllers.AuthController.sessionUser;
+
 
 public class UserController
 {
@@ -38,10 +42,9 @@ public class UserController
 
     public Handler getUserById = (context) ->
     {
+        User u = sessionUser;
 
-        Integer id = Integer.parseInt(context.pathParam("id"));
-
-        context.result(mapper.writeValueAsString(us.getUserById(id)));
+        context.result(mapper.writeValueAsString(us.getUserById(u.getUserID())));
 
     };
     public Handler getUserByEmail = (context) ->
@@ -53,17 +56,27 @@ public class UserController
 
     public Handler updateUser = (context) ->
     {
-        String userParam = String.valueOf(context.req.getSession().getAttribute("loggedIn"));
+        User u = sessionUser;
+
         try
         {
-            mapper.readValue(context.body(), User.class);
+            UpdateInfo update = mapper.readValue(context.body(), UpdateInfo.class);
 
-            User user = us.getUserByEmail(userParam);
+            String first = update.first.trim().toLowerCase();
+            String last = update.last.trim().toLowerCase();
+            String username = update.username.trim().toLowerCase();
+            String password = update.password.trim();
 
-            LoggingSingleton.logger.info(user.getRole() + " " + user.getFirst() + " " + user.getLast() +
-                    " has updated their personal information");
+            if(first != null && first.length() > 0)
+                u.setFirst(first);
+            if(last != null && last.length() > 0)
+                u.setLast(last);
+            if(username != null && username.length() > 0)
+                u.setUsername(username);
+            if(password != null && password.length() > 0)
+                u.setPassword(password);
 
-            context.result(mapper.writeValueAsString(us.updateUser(user)));
+            us.updateUser(u);
 
         } catch (Exception e)
         {
@@ -91,4 +104,11 @@ public class UserController
         }
     };
 
+}
+
+class UpdateInfo {
+    public String first;
+    public String last;
+    public String username;
+    public String password;
 }

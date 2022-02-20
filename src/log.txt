@@ -117,3 +117,41 @@
 2022-02-19 17:12:18 INFO  LoggingSingleton:39 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=10, role=EMPLOYEE, username='test', password='password', first='Yae', last='Miko', email='yae.miko@dc.com'}, type=TRAVEL, amount=2343.23, submit='02/19/2022', resolvedBy='null', resolved='null', description='inazuma', status=PENDING}
 2022-02-19 17:12:42 INFO  LoggingSingleton:22 - Login Approved: superman@dc.com
 2022-02-19 17:13:09 INFO  LoggingSingleton:120 - Reimbursement18 Approved
+2022-02-19 17:58:11 INFO  LoggingSingleton:22 - Login Approved: yae.miko@dc.com
+2022-02-19 18:00:20 INFO  LoggingSingleton:22 - Login Approved: yae.miko@dc.com
+2022-02-20 11:20:22 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-20 11:21:06 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-20 11:25:17 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-20 15:00:13 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-20 15:01:39 INFO  LoggingSingleton:79 - null robin hood has updated their personal information
+2022-02-20 15:02:56 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-20 15:03:01 INFO  LoggingSingleton:59 - EMPLOYEE robin hood has updated their personal information
+2022-02-20 15:04:14 INFO  LoggingSingleton:59 - EMPLOYEE robin hood has updated their personal information
+2022-02-20 15:06:46 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-20 15:07:24 INFO  LoggingSingleton:59 - EMPLOYEE robin hood has updated their personal information
+2022-02-20 15:07:56 INFO  LoggingSingleton:59 - EMPLOYEE bruce wayne has updated their personal information
+2022-02-20 15:10:14 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-20 15:10:19 INFO  LoggingSingleton:59 - EMPLOYEE bruce wayne has updated their personal information
+2022-02-20 16:31:02 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-20 16:32:32 INFO  LoggingSingleton:59 - EMPLOYEE patrick star has updated their personal information
+2022-02-20 16:33:52 INFO  LoggingSingleton:59 - EMPLOYEE test test has updated their personal information
+2022-02-20 16:34:30 INFO  LoggingSingleton:59 - EMPLOYEE test test has updated their personal information
+2022-02-20 16:35:34 INFO  LoggingSingleton:59 - EMPLOYEE   has updated their personal information
+2022-02-20 16:36:23 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-20 16:36:45 INFO  LoggingSingleton:59 - EMPLOYEE bruce wayne has updated their personal information
+2022-02-20 16:36:55 INFO  LoggingSingleton:59 - EMPLOYEE bruce wayne has updated their personal information
+2022-02-20 16:37:14 INFO  LoggingSingleton:59 - EMPLOYEE test  has updated their personal information
+2022-02-20 16:38:26 INFO  LoggingSingleton:59 - EMPLOYEE test  has updated their personal information
+2022-02-20 16:39:04 INFO  LoggingSingleton:59 - EMPLOYEE bruce wayne has updated their personal information
+2022-02-20 16:40:43 INFO  LoggingSingleton:59 - EMPLOYEE bruce wayne has updated their personal information
+2022-02-20 16:42:28 INFO  LoggingSingleton:22 - Login Approved: imbatman@dc.com
+2022-02-20 16:42:43 INFO  LoggingSingleton:59 - EMPLOYEE bruce wayne has updated their personal information
+2022-02-20 16:43:10 INFO  LoggingSingleton:59 - EMPLOYEE test wayne has updated their personal information
+2022-02-20 16:46:20 INFO  LoggingSingleton:39 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=5, role=EMPLOYEE, username='test', password='alfred', first='test', last='wayne', email='imbatman@dc.com'}, type=FOOD, amount=8000.0, submit='02/20/2022', resolvedBy='null', resolved='null', description='whatever', status=PENDING}
+2022-02-20 16:46:50 INFO  LoggingSingleton:22 - Login Approved: yae.miko@dc.com
+2022-02-20 16:47:13 INFO  LoggingSingleton:59 - EMPLOYEE Yae Miko has updated their personal information
+2022-02-20 16:47:41 INFO  LoggingSingleton:39 - New reimbursement created: Reimbursement{reimbursementID=0, employee=User{userID=10, role=EMPLOYEE, username='miko', password='password', first='Yae', last='Miko', email='yae.miko@dc.com'}, type=FOOD, amount=2342.23, submit='02/20/2022', resolvedBy='null', resolved='null', description='another test', status=PENDING}
+2022-02-20 16:47:50 INFO  LoggingSingleton:22 - Login Approved: superman@dc.com
+2022-02-20 16:49:21 INFO  LoggingSingleton:120 - Reimbursement17 Approved
+2022-02-20 16:51:13 INFO  LoggingSingleton:22 - Login Approved: superman@dc.com
+2022-02-20 16:51:37 INFO  LoggingSingleton:120 - Reimbursement19 Approved
