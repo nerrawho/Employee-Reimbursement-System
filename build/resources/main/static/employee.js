@@ -26,5 +26,5 @@ function createNewReimbursement() {
            "Content-Type" : "application/json"
        },
        body: JSON.stringify(reimbursementObj)
-   })
+   }).then(alert("Reimbursement Created"))
 }

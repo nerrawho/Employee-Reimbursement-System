@@ -22,7 +22,7 @@ function updateApprove() {
             "Content-Type" : "application/json"
         },
         body: JSON.stringify(reimbursementObj)
-    })
+    }).then(alert("Reimbursement Approved"))
 }
 
 //Deny API
@@ -45,7 +45,7 @@ function updateDeny() {
             "Content-Type" : "application/json"
         },
         body: JSON.stringify(reimbursementObj)
-    })
+    }).then(alert("Reimbursement Denied"))
 }
 
 let approveReimbursement = document.getElementById("approve");
