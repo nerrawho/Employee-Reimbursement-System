@@ -55,9 +55,14 @@ The website requires a user to log in either as a manager or an employee, the us
 
 The employee can submit a pending reimbursement as well as view his resolved reimbursements.
 
+The manager is able to approve/deny reimbursements. View all employees and view all pending reimbursements.
+
+Clicking on the logout button will redirect the user back to the login page.
+
 ## Contributors
 ---
-* Mimi Abimbola
-## License
+* nerrawho
+* Mimi-AB
+
 
 
